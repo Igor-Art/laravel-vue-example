@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+
+    database:
+        image: yobasystems/alpine-mariadb
+        container_name: lve_db
+        restart: "no"
+        ports:
+            - '${DB_PORT}:3306'
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+        volumes:
+            - ./docker/data/mysql:/var/lib/mysql
+
+    api:
+        build:
+            context: ./docker/bin/api
+        container_name: lve_api
+        restart: "no"
+        depends_on:
+            - database
+        ports:
+            - "8000:8000"
+        environment:
+            - NODE_PATH=/usr/local/lib/node_modules
+        volumes:
+            - ./docker/config/php/php.ini:/usr/local/etc/php/php.ini
+            - ./:/app
+        command: bash -c "php artisan octane:start --host=0.0.0.0 --watch"
+
+    web:
+        build:
+            context: ./docker/bin/web
+        container_name: lve_web
+        restart: "no"
+        depends_on:
+            - api
+        ports:
+            - "5173:5173"
+        volumes:
+            - ./:/app
+        command: bash -c "yarn && yarn dev --host 0.0.0.0"
