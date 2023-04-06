@@ -1,5 +1,5 @@
 <script setup></script>
 
 <template>
-  <div>Laravel API + Vue SPA</div>
+  <div class="my-10 text-center text-2xl">Laravel API + Vue SPA</div>
 </template>
