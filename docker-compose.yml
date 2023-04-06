@@ -7,7 +7,7 @@ services:
         container_name: lve_db
         restart: "no"
         ports:
-            - '${DB_PORT}:3306'
+            - '3377:3306'
         environment:
             MYSQL_DATABASE: ${DB_DATABASE}
             MYSQL_USER: ${DB_USERNAME}
@@ -21,6 +21,8 @@ services:
             context: ./docker/bin/api
         container_name: lve_api
         restart: "no"
+        links:
+            - database
         depends_on:
             - database
         ports:
@@ -30,7 +32,6 @@ services:
         volumes:
             - ./docker/config/php/php.ini:/usr/local/etc/php/php.ini
             - ./:/app
-        command: bash -c "php artisan octane:start --host=0.0.0.0 --watch"
 
     web:
         build:
@@ -43,4 +44,3 @@ services:
             - "5173:5173"
         volumes:
             - ./:/app
-        command: bash -c "yarn && yarn dev --host 0.0.0.0"
