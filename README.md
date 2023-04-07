@@ -1,8 +1,6 @@
-# Laravel API & Vue SPA: Example App
+# Laravel API & Vue SPA: Example App  
 
-### Do not use in production, just for example
-
-## Stack
+## Stack  
 - PHP 8.2
 - MariaDB 10
 - Node 18
@@ -15,7 +13,8 @@
 - Yarn
 - Tailwind CSS
 
-## Build with docker
+### Build with docker  
+#### Don't use this in a real application, just for a quick demo 
 ```
 docker-compose up -d
 ```
