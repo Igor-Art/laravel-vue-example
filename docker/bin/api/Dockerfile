@@ -24,6 +24,7 @@ RUN npm i -g --save-dev chokidar
 WORKDIR /app
 
 CMD composer install \
+    && php artisan key:generate --ansi \
     && php artisan storage:link \
     && php artisan migrate \
     && php artisan octane:install --server=roadrunner \
