@@ -1,5 +1,14 @@
-<script setup></script>
+<script setup>
+import { RouterLink, RouterView } from 'vue-router'
+</script>
 
 <template>
-  <div class="my-10 text-center text-2xl">Laravel API + Vue SPA</div>
+  <header>
+    <div class="container">
+      <RouterLink to="/">Home</RouterLink>
+    </div>
+  </header>
+  <main class="container">
+    <RouterView />
+  </main>
 </template>
