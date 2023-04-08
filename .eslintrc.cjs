@@ -5,7 +5,10 @@ module.exports = {
     "plugin:vue/vue3-essential",
     "eslint:recommended"
   ],
-  "rules": {},
+  "rules": {
+    "no-unused-vars": "off",
+    "vue/multi-word-component-names": "off"
+  },
   "parserOptions": {
     "ecmaVersion": "latest"
   }

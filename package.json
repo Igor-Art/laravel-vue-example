@@ -2,7 +2,8 @@
     "private": true,
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "lint": "eslint --ext .js,.vue,.cjs --ignore-path .gitignore --fix src"
     },
     "devDependencies": {
         "@vitejs/plugin-vue": "^4.1.0",
