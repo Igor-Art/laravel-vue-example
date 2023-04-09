@@ -27,3 +27,6 @@ cp .env.example .env
 docker-compose up -d
 ```
 Go to http://localhost:8000
+
+Database: `localhost:3377`  
+Mailhog: http://localhost:8025
