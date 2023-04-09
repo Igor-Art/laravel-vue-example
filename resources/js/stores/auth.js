@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia'
-import { useRouter } from 'vue-router'
+import { useToast } from 'vue-toastification'
 import http from '@/http'
+import router from '@/router'
 
-const router = useRouter()
+const toast = useToast()
 
 export const useAuthStore = defineStore({
   id: 'auth',
@@ -21,8 +22,7 @@ export const useAuthStore = defineStore({
         http.post('/auth/login', data)
           .then((response) => {
             this.setUser(response.data)
-
-            router.push('/')
+            router.push({ name: 'home' })
           })
           .catch((error) => {
             //
@@ -35,8 +35,8 @@ export const useAuthStore = defineStore({
         http.post('/auth/register', data)
           .then((response) => {
             this.setUser(response.data)
-
-            router.push('/')
+            toast.success('Welcome!')
+            router.push({ name: 'home' })
           })
           .catch((error) => {
             //
@@ -48,7 +48,8 @@ export const useAuthStore = defineStore({
       http.get('/sanctum/csrf-cookie').then(() => {
         http.post('/auth/forgot-password', data)
           .then((response) => {
-            router.push('/login')
+            toast.info(response.data.message)
+            router.push({ name: 'auth.login' })
           })
           .catch((error) => {
             //
@@ -60,7 +61,8 @@ export const useAuthStore = defineStore({
       http.get('/sanctum/csrf-cookie').then(() => {
         http.post('/auth/reset-password', data)
           .then((response) => {
-            router.push('/login')
+            toast.success(response.data.message)
+            router.push({ name: 'auth.login' })
           })
           .catch((error) => {
             //
@@ -81,7 +83,7 @@ export const useAuthStore = defineStore({
     kill () {
       this.setUser(null)
 
-      router.push('/login')
+      router.push({ name: 'auth.login' })
     }
   }
 })

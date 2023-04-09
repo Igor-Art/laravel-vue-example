@@ -2,8 +2,8 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import Toast from 'vue-toastification'
 
-import router from '@/router'
 import App from '@/App.vue'
+import router from '@/router'
 import ToastConfig from '@/config/toast'
 
 import 'vue-toastification/dist/index.css'
