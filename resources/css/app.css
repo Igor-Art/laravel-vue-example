@@ -1,3 +1,87 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body {
+  @apply h-full;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-app-body text-primary text-sm;
+  background-image: linear-gradient(to right bottom, #003362, #232959, #331d4d, #3d103f, #41002e);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-app-body;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-white;
+}
+
+a {
+  @apply hover:text-app-link-active;
+  transition: color 300ms;
+}
+
+button {
+  text-shadow: inherit;
+}
+
+button:focus-visible {
+  @apply outline-0;
+}
+
+button:disabled {
+  @apply opacity-60;
+}
+
+.input-row {
+  @apply relative mb-3 pb-5;
+}
+
+.input-row .error-message {
+  @apply absolute left-1 bottom-0 text-xs text-app-danger text-opacity-90 whitespace-nowrap;
+}
+
+.input {
+  @apply w-full py-1 px-2 border border-white border-opacity-50 rounded bg-transparent shadow-inner;
+}
+
+.input[type="number"] {
+  @apply block w-20;
+}
+
+.input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 1em;
+  width: 1em;
+  background: url(@images/times.svg) no-repeat 50% 50%;
+  background-size: contain;
+  cursor: pointer;
+}
+
+textarea.input {
+  @apply py-2 px-3;
+
+  min-height: 10rem;
+}
+
+.input:focus-visible {
+  @apply outline-0 border-opacity-90;
+}
+
+.input::placeholder {
+  @apply text-sm text-white text-opacity-50;
+}
+
+.input.has-error {
+  @apply border-app-danger;
+}
