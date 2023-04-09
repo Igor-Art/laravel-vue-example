@@ -43,7 +43,7 @@ const auth = useAuthStore()
     transition-timing-function: ease-out;
     transition-delay: 180ms;
   }
-  &.active,
+  &.router-link-active,
   &:hover {
     &:before {
       left: -5px;
