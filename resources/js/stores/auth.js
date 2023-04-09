@@ -32,7 +32,6 @@ export const useAuthStore = defineStore({
       http.get('/sanctum/csrf-cookie').then(() => {
         http.post('/auth/register', data)
           .then((response) => {
-            console.log(response)
             this.setUser(response.data)
 
             router.push('/')
