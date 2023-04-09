@@ -1,6 +1,9 @@
 import axios from 'axios'
+import { useToast } from 'vue-toastification'
 import router from '@/router'
 import { useAuthStore } from '@/stores/auth'
+
+const toast = useToast()
 
 const http = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -23,6 +26,12 @@ http.interceptors.response.use(
 
       return
     }
+
+    const message = error.response.data.errors
+      ? Object.values(error.response.data.errors).join('<br>')
+      : error.response.data.message
+
+    toast.error(message || 'An error has occurred')
 
     return Promise.reject(error)
   },
