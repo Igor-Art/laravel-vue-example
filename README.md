@@ -7,6 +7,8 @@
 - Docker
 - Laravel 10
 - Octane Roadrunner
+- Fortify
+- Sanctum
 - Telescope
 - Vue 3
 - Vite
