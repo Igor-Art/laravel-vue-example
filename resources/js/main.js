@@ -6,9 +6,9 @@ import App from '@/App.vue'
 
 import '@/../css/app.css'
 
-const app = createApp(App)
+const main = createApp(App)
 
-app.use(createPinia())
-app.use(router)
+main.use(createPinia())
+main.use(router)
 
-app.mount('#app')
+main.mount('#app')
