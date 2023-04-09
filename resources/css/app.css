@@ -43,6 +43,10 @@ button:disabled {
   @apply opacity-60;
 }
 
+.button.default {
+  @apply px-1 border-b border-white border-opacity-75;
+}
+
 .input-row {
   @apply relative mb-3 pb-5;
 }
@@ -84,4 +88,38 @@ textarea.input {
 
 .input.has-error {
   @apply border-app-danger;
+}
+
+.Vue-Toastification__toast--default,
+.Vue-Toastification__toast--info {
+  @apply bg-transparent border border-sky-500 border-opacity-90;
+  background-image: linear-gradient(to right bottom,
+    theme('colors.sky.500 / 20%') 10%,
+    rgba(255,255,255, 0) 60%,
+    theme('colors.sky.500 / 10%')
+  );
+}
+.Vue-Toastification__toast--success {
+  @apply bg-transparent border border-lime-500 border-opacity-90;
+  background-image: linear-gradient(to right bottom,
+    theme('colors.lime.500 / 20%') 10%,
+    rgba(255,255,255, 0) 60%,
+    theme('colors.lime.500 / 10%')
+  );
+}
+.Vue-Toastification__toast--error {
+  @apply bg-transparent border border-pink-800 border-opacity-70;
+  background-image: linear-gradient(to right bottom,
+    theme('colors.pink.500 / 15%') 10%,
+    rgba(255,255,255, 0) 60%,
+    theme('colors.pink.500 / 10%')
+  );
+}
+.Vue-Toastification__toast--warning {
+  @apply bg-transparent border border-yellow-400 border-opacity-60;
+  background-image: linear-gradient(to right bottom,
+    theme('colors.yellow.400 / 12%') 10%,
+    rgba(255,255,255, 0) 60%,
+    theme('colors.yellow.400 / 10%')
+  );
 }

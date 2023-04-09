@@ -1,14 +1,19 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import Toast from 'vue-toastification'
 
 import router from '@/router'
 import App from '@/App.vue'
+import ToastConfig from '@/config/toast'
 
+import 'vue-toastification/dist/index.css'
 import '@/../css/app.css'
 
-const main = createApp(App)
+const app = createApp(App)
 
-main.use(createPinia())
-main.use(router)
+app.use(createPinia())
+app.use(router)
 
-main.mount('#app')
+app.use(Toast, ToastConfig)
+
+app.mount('#app')

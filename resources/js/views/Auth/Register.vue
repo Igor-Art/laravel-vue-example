@@ -39,7 +39,7 @@ async function onSubmit (values) {
       </div>
       <div class="mt-6 text-right">
         <RouterLink :to="{ name: 'auth.login' }" class="mr-5 text-secondary">Already?</RouterLink>
-        <button :disabled="isSubmitting" class="px-1 border-b border-white border-opacity-75">
+        <button :disabled="isSubmitting" class="button default">
           Register
         </button>
       </div>

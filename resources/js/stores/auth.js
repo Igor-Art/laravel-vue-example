@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
+import { useRouter } from 'vue-router'
 import http from '@/http'
-import router from '@/router'
+
+const router = useRouter()
 
 export const useAuthStore = defineStore({
   id: 'auth',
@@ -46,8 +48,6 @@ export const useAuthStore = defineStore({
       http.get('/sanctum/csrf-cookie').then(() => {
         http.post('/auth/forgot-password', data)
           .then((response) => {
-            //
-
             router.push('/login')
           })
           .catch((error) => {
@@ -60,8 +60,6 @@ export const useAuthStore = defineStore({
       http.get('/sanctum/csrf-cookie').then(() => {
         http.post('/auth/reset-password', data)
           .then((response) => {
-            //
-
             router.push('/login')
           })
           .catch((error) => {
