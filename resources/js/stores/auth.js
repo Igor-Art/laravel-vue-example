@@ -35,7 +35,7 @@ export const useAuthStore = defineStore({
         http.post('/auth/register', data)
           .then((response) => {
             this.setUser(response.data)
-            toast.success('Welcome!')
+            toast.success('Welcome! Check your email and verify your account')
             router.push({ name: 'home' })
           })
           .catch((error) => {
