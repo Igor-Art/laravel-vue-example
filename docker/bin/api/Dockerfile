@@ -6,7 +6,10 @@ RUN apt-get update  \
     && apt-get install -y \
     && apt-get install -y libcurl4-openssl-dev \
     && apt-get install -y zip unzip \
-	&& docker-php-ext-install curl mysqli pdo_mysql sockets
+    && apt-get install -y libmagickwand-dev --no-install-recommends \
+	&& docker-php-ext-install curl mysqli pdo_mysql sockets \
+    && pecl install imagick \
+    && docker-php-ext-enable imagick
 
 COPY --from=rr /usr/bin/rr /usr/local/bin/rr
 
