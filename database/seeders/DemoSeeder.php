@@ -17,7 +17,10 @@ class DemoSeeder extends Seeder
 
         File::copyDirectory(resource_path('stubs/images'), Storage::disk('public')->path('/'));
 
-        $this->call(UserSeeder::class);
-        $this->call(GameSeeder::class);
+        $this->call([
+            UserSeeder::class,
+            GenreSeeder::class,
+            GameSeeder::class,
+        ]);
     }
 }
