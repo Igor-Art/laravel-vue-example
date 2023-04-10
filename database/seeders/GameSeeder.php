@@ -75,9 +75,14 @@ class GameSeeder extends Seeder
 
     public function run(): void
     {
+        $genres = Genre::query()->limit(100)->get();
+
         Game::factory()
             ->count(count($this->items))
             ->sequence(...$this->items)
-            ->create();
+            ->create()
+            ->each(static function ($game) use ($genres) {
+                $game->genres()->attach($genres->random(mt_rand(1, 3)));
+            });
     }
 }
