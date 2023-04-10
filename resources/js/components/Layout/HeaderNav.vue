@@ -14,10 +14,12 @@ const auth = useAuthStore()
       <RouterLink v-if="!auth.check" :to="{ name: 'auth.login' }" class="item">Login</RouterLink>
       <RouterLink v-if="!auth.check" :to="{ name: 'auth.register' }" class="item">Register</RouterLink>
       <span v-if="auth.check" class="item">
-          <span class="mr-2 text-xs">👤</span>
-          <span>{{ auth.user.name }}</span>
-        </span>
-      <button v-if="auth.check" @click="auth.logout()" class="item">Logout</button>
+        <font-awesome-icon icon="user" class="mr-2 text-xs" />
+        <span>{{ auth.user.name }}</span>
+      </span>
+      <button v-if="auth.check" @click="auth.logout()" class="item">
+        <font-awesome-icon icon="right-from-bracket" aria-label="Logout" />
+      </button>
     </div>
   </nav>
 </template>
