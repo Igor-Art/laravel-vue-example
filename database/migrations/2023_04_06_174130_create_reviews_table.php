@@ -15,6 +15,8 @@ return new class extends Migration
             $table->double('rating', 3, 2);
             $table->text('content');
             $table->timestamps();
+
+            $table->unique(['game_id', 'user_id']);
         });
     }
 

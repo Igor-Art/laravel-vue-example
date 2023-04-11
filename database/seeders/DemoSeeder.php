@@ -21,6 +21,7 @@ class DemoSeeder extends Seeder
             UserSeeder::class,
             GenreSeeder::class,
             GameSeeder::class,
+            ReviewSeeder::class,
         ]);
     }
 }
