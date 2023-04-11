@@ -30,6 +30,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function wishlist(): BelongsToMany
     {
-        return $this->belongsToMany(Game::class, Wishlist::class)->withTimestamps();
+        return $this->belongsToMany(Game::class, Wishlist::class);
     }
 }
