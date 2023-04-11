@@ -24,5 +24,7 @@ class DemoSeeder extends Seeder
             ReviewSeeder::class,
             WishlistSeeder::class,
         ]);
+
+        $this->command->call('app:game-rating-calc');
     }
 }
