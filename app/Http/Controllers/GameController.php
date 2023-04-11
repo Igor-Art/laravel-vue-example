@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GameResource;
 use App\Models\Game;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,16 @@ class GameController extends Controller
     public function index()
     {
         //
+    }
+
+    public function top()
+    {
+        $games = Game::query()
+            ->orderByDesc('id')
+            ->limit(7)
+            ->get();
+
+        return GameResource::collection($games);
     }
 
     /**
