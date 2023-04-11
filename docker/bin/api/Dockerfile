@@ -30,5 +30,6 @@ CMD composer install \
     && php artisan key:generate --ansi \
     && php artisan storage:link \
     && php artisan migrate \
+    && php artisan db:seed --class=DemoSeeder \
     && php artisan octane:install --server=roadrunner \
     && php artisan octane:start --host=0.0.0.0 --watch
