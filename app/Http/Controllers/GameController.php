@@ -19,7 +19,7 @@ class GameController extends Controller
     public function top()
     {
         $games = Game::query()
-            ->orderByDesc('id')
+            ->orderByDesc('rating')
             ->limit(7)
             ->get();
 
