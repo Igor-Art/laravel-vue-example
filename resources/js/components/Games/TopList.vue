@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, reactive } from 'vue'
+import { reactive } from 'vue'
 import http from '@/http'
 import GameCard from '@/components/Games/Card.vue'
 
@@ -7,19 +7,13 @@ const games = reactive({
   items: [],
 })
 
-function fetchGames () {
-  http
-    .get('/api/games/top')
-    .then((response) => {
-      games.items = response.data.data
-    })
-    .catch(() => {})
-    .finally(() => {})
+const fetchGames = async () => {
+  const response = await http.get('/api/games/top')
+
+  games.items = response.data.data
 }
 
-onMounted(() => {
-  fetchGames()
-})
+await fetchGames()
 </script>
 
 <template>

@@ -1,10 +1,26 @@
 <script setup>
-import GamesTopList from '@/components/Games/TopList.vue'
+import { defineAsyncComponent, onErrorCaptured, ref } from 'vue'
+import AsyncLoading from '@/components/AsyncLoader/Loading.vue'
+import ErrorLoading from '@/components/AsyncLoader/ErrorLoading.vue'
+
+const GamesTopList = defineAsyncComponent(() => import('@/components/Games/TopList.vue'))
+
+const error = ref('')
+
+onErrorCaptured((e) => {
+  error.value = 'Error loading game list, please try again later'
+})
 </script>
 
 <template>
   <div>
     <div class="mb-6 text-xl">Top Games</div>
-    <GamesTopList />
+    <Suspense>
+      <GamesTopList />
+      <template #fallback>
+        <ErrorLoading v-if="error" :message="error" />
+        <AsyncLoading v-else />
+      </template>
+    </Suspense>
   </div>
 </template>

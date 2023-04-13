@@ -29,7 +29,7 @@ http.interceptors.response.use(
 
     const message = error.response.data.errors
       ? Object.values(error.response.data.errors).join('<br>')
-      : error.response.data.message
+      : (error.response.data.message || error.message)
 
     toast.error(message || 'An error has occurred')
 

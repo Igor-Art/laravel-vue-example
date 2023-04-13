@@ -20,6 +20,7 @@ module.exports = {
           primary: colors.sky['500'],
           body: '#2e214e',
           danger: '#ff2498',
+          warning: colors.yellow['200'],
           success: '#6df825',
           link: {
             active: colors.sky['300'],
