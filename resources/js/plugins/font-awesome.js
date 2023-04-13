@@ -8,11 +8,13 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
   faUser,
   faRightFromBracket,
+  faStar,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
   faUser,
   faRightFromBracket,
+  faStar,
 )
 
 export default FontAwesomeIcon

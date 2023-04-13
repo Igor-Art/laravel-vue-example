@@ -17,7 +17,7 @@ await fetchGames()
 </script>
 
 <template>
-  <div class="flex flex-wrap">
+  <div class="flex flex-wrap -mx-1">
     <GameCard v-for="item in games.items" :key="item.id" :game="item" />
   </div>
 </template>

@@ -5,11 +5,60 @@ defineProps({
     required: true,
   },
 })
+
+const getDefaultCover = () => {}
 </script>
 
 <template>
-  <div class="w-48 mb-4 mr-4">
-    <img :src="game.cover_url" :alt="game.title" />
-    <div>{{ game.title }} ({{ game.rating || 0 }})</div>
+  <div
+    class="game-card relative rounded"
+    :style="{backgroundImage: 'url(' + (game.cover_url || getDefaultCover()) + ')'}"
+    :title="game.title"
+  >
+    <div class="top-panel absolute top-0 left-0 right-0 flex flex-nowrap justify-between rounded-t py-1 px-2 bg-black bg-opacity-40">
+      <div class="flex font-bold text-xs">
+        <font-awesome-icon icon="star" class="mr-1" />
+        <span>{{ game.rating || '--' }}</span>
+      </div>
+    </div>
+    <div class="name absolute bottom-0 left-0 right-0 py-1 px-2 rounded-b bg-indigo-900 text-xs">
+      {{ game.title }}
+    </div>
   </div>
 </template>
+
+<style scoped lang="scss">
+$gutter: 10px;
+
+@mixin setWidth($percentage) {
+  $ratio: 55.5;
+
+  padding-top: calc(($percentage - $gutter) + ($percentage - $gutter) / 100 * $ratio);
+  width: calc($percentage - $gutter);
+}
+
+.game-card {
+  @include setWidth(25%);
+
+  margin: 0 $gutter / 2 $gutter;
+  background: transparent top center no-repeat;
+  background-size: 100% 100%;
+
+  @media only screen and (min-width: 1024px) {
+    @include setWidth(20%)
+  }
+  @media only screen and (min-width: 1280px) {
+    @include setWidth(16.6%)
+  }
+  @media only screen and (min-width: 1536px) {
+    @include setWidth(12.5%)
+  }
+
+  .name {
+    transform: translateZ(0);
+  }
+  .top-panel {
+    transform: translateZ(0);
+  }
+}
+</style>

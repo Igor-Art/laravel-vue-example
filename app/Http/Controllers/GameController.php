@@ -20,7 +20,7 @@ class GameController extends Controller
     {
         $games = Game::query()
             ->orderByDesc('rating')
-            ->limit(7)
+            ->limit(8)
             ->get();
 
         return GameResource::collection($games);
