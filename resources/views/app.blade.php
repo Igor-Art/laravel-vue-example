@@ -8,6 +8,6 @@
     @vite(['resources/js/main.js'])
 </head>
 <body>
-<div id="app"></div>
+<div id="app" data-settings='@json($appSettings)'></div>
 </body>
 </html>
