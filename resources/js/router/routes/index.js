@@ -1,5 +1,6 @@
 import HomeView from '@/views/Home.vue'
 import authRoutes from './auth'
+import gamesRoutes from './games'
 
 export default [
   {
@@ -11,6 +12,7 @@ export default [
     },
   },
   ...authRoutes,
+  ...gamesRoutes,
   {
     path: '/:pathMatch(.*)',
     name: 'not-found',

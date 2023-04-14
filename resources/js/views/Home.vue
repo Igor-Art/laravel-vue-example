@@ -14,7 +14,10 @@ onErrorCaptured((e) => {
 
 <template>
   <div>
-    <div class="mb-2 text-xl">Top Games</div>
+    <div class="flex items-center mb-2 text-xl">
+      <font-awesome-icon icon="star" class="h-4 mr-2" />
+      <span>Top Games</span>
+    </div>
     <Suspense>
       <GamesTopList />
       <template #fallback>

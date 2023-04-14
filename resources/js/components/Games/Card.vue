@@ -1,4 +1,6 @@
 <script setup>
+import { RouterLink } from 'vue-router'
+
 defineProps({
   game: {
     type: Object,
@@ -15,14 +17,19 @@ const getDefaultCover = () => {}
     :style="{backgroundImage: 'url(' + (game.cover_url || getDefaultCover()) + ')'}"
     :title="game.title"
   >
-    <div class="top-panel absolute top-0 left-0 right-0 flex flex-nowrap justify-between rounded-t py-1 px-2 bg-black bg-opacity-40 translate-z-none">
+    <RouterLink
+      :to="{ name: 'games.show', params: { slug: game.slug } }"
+      class="block absolute bottom-0 left-0 right-0 top-0 hover:text-primary"
+    >
+      <span class="block absolute bottom-0 left-0 right-0 py-1 px-2 rounded-b bg-indigo-900 text-xs translate-z-none">
+        {{ game.title }}
+      </span>
+    </RouterLink>
+    <div class="absolute top-0 left-0 right-0 flex flex-nowrap justify-between rounded-t py-1 px-2 bg-black bg-opacity-40 translate-z-none">
       <div class="flex font-bold text-xs">
         <font-awesome-icon icon="star" class="mr-1" />
         <span>{{ game.rating || '--' }}</span>
       </div>
-    </div>
-    <div class="name absolute bottom-0 left-0 right-0 py-1 px-2 rounded-b bg-indigo-900 text-xs translate-z-none">
-      {{ game.title }}
     </div>
   </div>
 </template>
