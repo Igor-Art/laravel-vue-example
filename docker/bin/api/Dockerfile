@@ -8,8 +8,8 @@ RUN apt-get update  \
     && apt-get install -y zip unzip \
     && apt-get install -y libmagickwand-dev --no-install-recommends \
 	&& docker-php-ext-install curl mysqli pdo_mysql sockets \
-    && pecl install imagick \
-    && docker-php-ext-enable imagick
+    && pecl install imagick redis \
+    && docker-php-ext-enable imagick redis
 
 COPY --from=rr /usr/bin/rr /usr/local/bin/rr
 

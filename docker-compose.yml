@@ -51,3 +51,10 @@ services:
         restart: "no"
         ports:
             - '${MAILHOG_UI_PORT}:8025'
+
+    redis:
+        image: redis:alpine
+        container_name: lve_redis
+        command: redis-server --appendonly yes --requirepass "${REDIS_PASSWORD}"
+        volumes:
+            - ./docker/data/redis:/data
