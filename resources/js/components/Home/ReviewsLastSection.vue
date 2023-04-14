@@ -2,6 +2,7 @@
 import { defineAsyncComponent, onErrorCaptured, ref } from 'vue'
 import AsyncLoading from '@/components/AsyncLoader/Loading.vue'
 import ErrorLoading from '@/components/AsyncLoader/ErrorLoading.vue'
+import Headline from '@/components/Headline.vue'
 
 const ReviewsLastList = defineAsyncComponent(() => import('@/components/Reviews/LastList.vue'))
 
@@ -13,10 +14,7 @@ onErrorCaptured(() => {
 </script>
 
 <template>
-  <div class="flex items-center mb-3 text-xl">
-    <font-awesome-icon icon="comments" class="h-4 mr-2" />
-    <span>Last Reviews</span>
-  </div>
+  <Headline icon="comments">Last Reviews</Headline>
   <Suspense>
     <ReviewsLastList />
     <template #fallback>

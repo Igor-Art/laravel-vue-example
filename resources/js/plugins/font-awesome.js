@@ -11,6 +11,7 @@ import {
   faStar,
   faComments,
   faAnglesRight,
+  faCode,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -19,6 +20,7 @@ library.add(
   faStar,
   faComments,
   faAnglesRight,
+  faCode,
 )
 
 export default FontAwesomeIcon
