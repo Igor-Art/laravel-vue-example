@@ -14,6 +14,10 @@ import {
   faCode,
 } from '@fortawesome/free-solid-svg-icons'
 
+import {
+  faGithub,
+} from '@fortawesome/free-brands-svg-icons'
+
 library.add(
   faUser,
   faRightFromBracket,
@@ -21,6 +25,7 @@ library.add(
   faComments,
   faAnglesRight,
   faCode,
+  faGithub,
 )
 
 export default FontAwesomeIcon
