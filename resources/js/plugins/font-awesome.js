@@ -9,12 +9,14 @@ import {
   faUser,
   faRightFromBracket,
   faStar,
+  faComments,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
   faUser,
   faRightFromBracket,
   faStar,
+  faComments,
 )
 
 export default FontAwesomeIcon

@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('game_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->double('rating', 3, 2);
+            $table->unsignedTinyInteger('rating');
             $table->text('content');
             $table->timestamps();
 

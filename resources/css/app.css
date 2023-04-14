@@ -19,6 +19,7 @@ html {
 body {
   @apply bg-app-body text-primary text-sm;
   background-image: linear-gradient(to right bottom, #003362, #232959, #331d4d, #3d103f, #41002e);
+  background-attachment: fixed;
 }
 
 ::-webkit-scrollbar {

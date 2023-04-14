@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ReviewResource;
 use App\Models\Review;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,17 @@ class ReviewController extends Controller
     public function index()
     {
         //
+    }
+
+    public function last()
+    {
+        $reviews = Review::query()
+            ->with(['game', 'user'])
+            ->orderByDesc('id')
+            ->limit(5)
+            ->get();
+
+        return ReviewResource::collection($reviews);
     }
 
     /**

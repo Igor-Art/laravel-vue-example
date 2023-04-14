@@ -18,7 +18,11 @@ await fetchGames()
 
 <template>
   <div class="flex flex-wrap -mx-1">
-    <GameCard v-for="item in games.items" :key="item.id" :game="item" />
+    <GameCard
+      v-for="item in games.items"
+      :key="item.id"
+      :game="item"
+    />
   </div>
 </template>
 
