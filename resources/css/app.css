@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .translate-z-none {
+    transform: translateZ(0);
+  }
+}
+
 html, body {
   @apply h-full;
 }

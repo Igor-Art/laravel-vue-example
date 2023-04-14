@@ -14,7 +14,7 @@ onErrorCaptured((e) => {
 
 <template>
   <div>
-    <div class="mb-6 text-xl">Top Games</div>
+    <div class="mb-2 text-xl">Top Games</div>
     <Suspense>
       <GamesTopList />
       <template #fallback>

@@ -15,13 +15,13 @@ const getDefaultCover = () => {}
     :style="{backgroundImage: 'url(' + (game.cover_url || getDefaultCover()) + ')'}"
     :title="game.title"
   >
-    <div class="top-panel absolute top-0 left-0 right-0 flex flex-nowrap justify-between rounded-t py-1 px-2 bg-black bg-opacity-40">
+    <div class="top-panel absolute top-0 left-0 right-0 flex flex-nowrap justify-between rounded-t py-1 px-2 bg-black bg-opacity-40 translate-z-none">
       <div class="flex font-bold text-xs">
         <font-awesome-icon icon="star" class="mr-1" />
         <span>{{ game.rating || '--' }}</span>
       </div>
     </div>
-    <div class="name absolute bottom-0 left-0 right-0 py-1 px-2 rounded-b bg-indigo-900 text-xs">
+    <div class="name absolute bottom-0 left-0 right-0 py-1 px-2 rounded-b bg-indigo-900 text-xs translate-z-none">
       {{ game.title }}
     </div>
   </div>
@@ -43,6 +43,10 @@ $gutter: 10px;
   margin: 0 $gutter / 2 $gutter;
   background: transparent top center no-repeat;
   background-size: 100% 100%;
+  box-shadow: none;
+  transform-origin: top;
+  transform: perspective(1100px) rotateX(0deg);
+  transition: all .25s;
 
   @media only screen and (min-width: 1024px) {
     @include setWidth(20%)
@@ -54,11 +58,12 @@ $gutter: 10px;
     @include setWidth(12.5%)
   }
 
-  .name {
-    transform: translateZ(0);
-  }
-  .top-panel {
-    transform: translateZ(0);
+  &:hover {
+    box-shadow: 0 5px 10px rgba(0,0,0, .4);
+    transform: perspective(1100px) rotateX(10deg);
+    transition: all .5s;
+    transition-delay: .1s;
+    z-index: 10;
   }
 }
 </style>
