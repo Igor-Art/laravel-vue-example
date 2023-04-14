@@ -10,7 +10,7 @@ defineProps({
 <template>
   <div class="flex items-center mb-3 text-xl">
     <font-awesome-icon v-if="icon" :icon="icon" class="h-4 mr-2" />
-    <div>
+    <div class="flex-grow">
       <slot />
     </div>
   </div>

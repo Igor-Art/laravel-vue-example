@@ -26,9 +26,6 @@ await fetchGames()
         :game="item"
       />
     </div>
-    <div class="mt-2 text-right">
-      <MoreLink to="/" label="Show all" />
-    </div>
   </div>
 </template>
 
