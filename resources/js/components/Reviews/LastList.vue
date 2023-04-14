@@ -2,6 +2,7 @@
 import { reactive } from 'vue'
 import http from '@/http'
 import ReviewCard from '@/components/Reviews/Card.vue'
+import MoreLink from '@/components/MoreLink.vue'
 
 const reviews = reactive({
   items: [],
@@ -17,12 +18,17 @@ await fetchReviews()
 </script>
 
 <template>
-  <div>
-    <ReviewCard
-      v-for="item in reviews.items"
-      :key="item.id"
-      :review="item"
-      class="mb-4"
-    />
+  <div class="max-w-xl pl-2">
+    <div class="logline-mask overflow-y-hidden max-h-64">
+      <ReviewCard
+        v-for="item in reviews.items"
+        :key="item.id"
+        :review="item"
+        class="mb-6"
+      />
+    </div>
+    <div class="text-right pr-2">
+      <MoreLink to="/" label="Show all" />
+    </div>
   </div>
 </template>

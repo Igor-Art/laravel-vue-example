@@ -13,7 +13,7 @@ onErrorCaptured(() => {
 </script>
 
 <template>
-  <div class="flex items-center mb-2 text-xl">
+  <div class="flex items-center mb-3 text-xl">
     <font-awesome-icon icon="star" class="h-4 mr-2" />
     <span>Top Games</span>
   </div>

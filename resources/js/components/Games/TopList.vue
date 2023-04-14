@@ -2,6 +2,7 @@
 import { reactive } from 'vue'
 import http from '@/http'
 import GameCard from '@/components/Games/Card.vue'
+import MoreLink from '@/components/MoreLink.vue'
 
 const games = reactive({
   items: [],
@@ -17,12 +18,17 @@ await fetchGames()
 </script>
 
 <template>
-  <div class="flex flex-wrap -mx-1">
-    <GameCard
-      v-for="item in games.items"
-      :key="item.id"
-      :game="item"
-    />
+  <div>
+    <div class="flex flex-wrap -mx-1">
+      <GameCard
+        v-for="item in games.items"
+        :key="item.id"
+        :game="item"
+      />
+    </div>
+    <div class="mt-2 text-right">
+      <MoreLink to="/" label="Show all" />
+    </div>
   </div>
 </template>
 

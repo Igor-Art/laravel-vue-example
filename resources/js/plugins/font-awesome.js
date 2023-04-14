@@ -10,6 +10,7 @@ import {
   faRightFromBracket,
   faStar,
   faComments,
+  faAnglesRight,
 } from '@fortawesome/free-solid-svg-icons'
 
 library.add(
@@ -17,6 +18,7 @@ library.add(
   faRightFromBracket,
   faStar,
   faComments,
+  faAnglesRight,
 )
 
 export default FontAwesomeIcon

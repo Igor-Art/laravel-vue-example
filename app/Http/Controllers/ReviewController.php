@@ -20,7 +20,7 @@ class ReviewController extends Controller
     {
         $reviews = Review::query()
             ->with(['game', 'user'])
-            ->orderByDesc('id')
+            ->orderByDesc('created_at')
             ->limit(5)
             ->get();
 
