@@ -21,7 +21,7 @@ class ReviewController extends Controller
         $reviews = Review::query()
             ->with(['game', 'user'])
             ->orderByDesc('created_at')
-            ->limit(5)
+            ->limit(4)
             ->get();
 
         return ReviewResource::collection($reviews);

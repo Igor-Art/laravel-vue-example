@@ -7,7 +7,7 @@ import HeaderNav from '@/components/Layout/HeaderNav.vue'
   <header class="bg-black bg-opacity-20 border-b border-black border-opacity-20">
     <HeaderNav />
   </header>
-  <main class="container py-8">
+  <main class="container pt-8 pb-2">
     <RouterView />
   </main>
 </template>
