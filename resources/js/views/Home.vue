@@ -6,7 +6,7 @@ import Headline from '@/components/Headline.vue'
 
 <template>
   <div>
-    <div class="mb-10">
+    <div class="mb-6">
       <Headline icon="code">Disclaimer</Headline>
       <div class="pl-2 leading-6 font-light">
         <p>

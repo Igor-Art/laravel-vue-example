@@ -19,7 +19,7 @@ await fetchReviews()
 
 <template>
   <div class="max-w-xl pl-2">
-    <div class="logline-mask overflow-y-hidden max-h-64">
+    <div class="logline-mask overflow-y-hidden max-h-64 mb-2">
       <ReviewCard
         v-for="item in reviews.items"
         :key="item.id"
