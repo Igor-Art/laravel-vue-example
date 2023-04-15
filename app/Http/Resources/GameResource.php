@@ -24,6 +24,7 @@ class GameResource extends JsonResource
             'rating' => $this->rating,
             'price' => $this->price,
             'description' => $this->description,
+            'genres' => GenreResource::collection($this->whenLoaded('genres')),
         ];
     }
 }
