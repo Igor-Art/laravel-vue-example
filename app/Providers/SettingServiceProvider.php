@@ -13,7 +13,7 @@ class SettingServiceProvider extends ServiceProvider
     {
         $settings = Cache::rememberForever('app_settings', static function () {
             try {
-                return Setting::pluck('value', 'key')->toArray();
+                return Setting::pluck('value', 'key')->toArray() ?: null;
 
             } catch (\Throwable $e) {
                 return null;
