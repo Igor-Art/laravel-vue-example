@@ -2,7 +2,6 @@
 import { reactive } from 'vue'
 import http from '@/http'
 import GameCard from '@/components/Games/Card.vue'
-import MoreLink from '@/components/MoreLink.vue'
 
 const games = reactive({
   items: [],
