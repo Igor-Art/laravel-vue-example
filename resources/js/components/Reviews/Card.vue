@@ -1,9 +1,11 @@
 <script setup>
+import RatingBar from '@/components/RatingBar.vue'
+
 defineProps({
   review: {
     type: Object,
     required: true,
-  }
+  },
 })
 </script>
 
@@ -16,9 +18,7 @@ defineProps({
           {{ review.user.name }}
         </RouterLink>
       </div>
-      <div class="mr-4 text-base" :aria-label="`Rating ${review.rating}/5`" :title="`${review.rating}/5`">
-        <font-awesome-icon icon="star" v-for="index in parseInt(review.rating)" :key="index" class="w-2.5" />
-      </div>
+      <RatingBar :rating="review.rating" icon-class="w-2.5" class="mr-4 text-base" />
       <RouterLink :to="{ name: 'games.show', params: { slug: review.game.slug } }" class="underline">
         {{ review.game.title }}
       </RouterLink>
