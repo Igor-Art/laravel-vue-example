@@ -47,7 +47,7 @@ $gutter: 10px;
 .game-card {
   @include setWidth(25%);
 
-  margin: 0 $gutter / 2 $gutter;
+  margin: 0 calc($gutter / 2) $gutter;
   background: transparent top center no-repeat;
   background-size: 100% 100%;
   box-shadow: none;
