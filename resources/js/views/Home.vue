@@ -2,6 +2,9 @@
 import GamesTopSection from '@/components/Home/GamesTopSection.vue'
 import ReviewsLastSection from '@/components/Home/ReviewsLastSection.vue'
 import Headline from '@/components/Headline.vue'
+import { useSettingsStore } from '@/stores/settings'
+
+const settings = useSettingsStore()
 </script>
 
 <template>
@@ -22,7 +25,16 @@ import Headline from '@/components/Headline.vue'
           Use any code of the app at your own risk 😈.
         </p>
         <p>
-          You can make a suggestion or fix something in a github issue. Enjoy!
+          You can make a suggestion or fix something in a
+          <a
+            :href="settings.github"
+            target="_blank"
+            rel="nofollow noopener noreferrer"
+            class="text-sky-300 hover:text-app-secondary"
+          >
+            GitHub
+          </a>.
+          Enjoy!
         </p>
       </div>
     </div>

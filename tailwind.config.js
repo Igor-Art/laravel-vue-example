@@ -18,6 +18,7 @@ module.exports = {
         secondary: colors.gray['400'],
         app: {
           primary: colors.sky['500'],
+          secondary: colors.yellow['300'],
           body: '#2e214e',
           danger: '#ff2498',
           warning: colors.yellow['200'],
