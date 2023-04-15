@@ -1,6 +1,7 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import HeaderNav from '@/components/Layout/HeaderNav.vue'
+import AsyncLoading from '@/components/AsyncLoader/Loading.vue'
 </script>
 
 <template>
@@ -9,14 +10,23 @@ import HeaderNav from '@/components/Layout/HeaderNav.vue'
   </header>
   <main class="container pt-8 pb-2">
     <RouterView v-slot="{ Component, route }">
-      <Transition name="fade" mode="out-in" appear>
-        <Component :is="Component" :key="route.path" />
-      </Transition>
+      <template v-if="Component">
+        <Transition name="fade" mode="out-in">
+          <KeepAlive>
+            <Suspense>
+              <Component :is="Component" :key="route.path" />
+              <template #fallback>
+                <AsyncLoading />
+              </template>
+            </Suspense>
+          </KeepAlive>
+        </Transition>
+      </template>
     </RouterView>
   </main>
 </template>
 
-<style scoped>
+<style>
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity .4s ease;
