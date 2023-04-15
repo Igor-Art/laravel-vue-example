@@ -12,7 +12,12 @@ class SettingServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $settings = Cache::rememberForever('app_settings', static function () {
-            return Setting::pluck('value', 'key')->toArray();
+            try {
+                return Setting::pluck('value', 'key')->toArray();
+
+            } catch (\Throwable $e) {
+                return null;
+            }
         });
 
         Config::set('settings', $settings);
