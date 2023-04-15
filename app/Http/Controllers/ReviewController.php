@@ -22,7 +22,7 @@ class ReviewController extends Controller
                 GameFilter::class,
                 UserFilter::class,
             ])
-            ->paginate(10);
+            ->paginate(5);
 
         return ReviewResource::collection($reviews);
     }

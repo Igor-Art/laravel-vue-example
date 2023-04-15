@@ -13,6 +13,9 @@ const settings = useSettingsStore()
       <RouterLink :to="{ name: 'home' }" class="item">
         Home
       </RouterLink>
+      <RouterLink :to="{ name: 'games.index' }" class="item">
+        Games
+      </RouterLink>
     </div>
     <div class="flex items-center">
       <a
@@ -57,7 +60,7 @@ const settings = useSettingsStore()
     @apply block relative py-3;
 
     &:not(:last-child) {
-      @apply mr-4;
+      @apply mr-6;
     }
 
     &:before {

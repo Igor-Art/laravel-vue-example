@@ -3,7 +3,7 @@ import { computed } from 'vue'
 
 const props = defineProps({
   rating: {
-    type: [Number, String, null],
+    type: [Number, String, null, undefined],
     required: true,
   },
   iconClass: {
