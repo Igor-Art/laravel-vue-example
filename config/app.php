@@ -198,6 +198,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\SettingServiceProvider::class,
         App\Providers\ViewServiceProvider::class,
+        App\Providers\CurrencyServiceProvider::class,
 
     ],
 

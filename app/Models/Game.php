@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Services\Currency\Currency;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -44,6 +45,13 @@ class Game extends Model
     {
         return Attribute::make(
             get: fn () => Storage::disk(static::class)->url($this->cover),
+        );
+    }
+
+    protected function price(): Attribute
+    {
+        return Attribute::make(
+            get: static fn ($value) => $value ? Currency::make($value) : null,
         );
     }
 }

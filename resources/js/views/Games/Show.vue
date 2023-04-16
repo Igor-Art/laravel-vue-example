@@ -38,7 +38,7 @@ fetchReviews()
 <template>
   <div>
     <div class="flex">
-      <img :src="game.cover_url" :alt="game.title" class="w-48 mr-7 rounded shadow-xl" />
+      <img :src="game.cover_url" :alt="game.title" class="w-56 mr-7 rounded shadow-xl" />
       <div class="pt-2">
         <div class="flex mb-6">
           <span class="mr-2 text-2xl">{{ game.title }}</span>
@@ -54,7 +54,19 @@ fetchReviews()
             {{ genre.title }}
           </RouterLink>
         </div>
-        <RatingBar :rating="game.rating" class="mb-6 text-2xl" />
+        <div class="mb-6 flex items-center">
+          <RatingBar :rating="game.rating" class="text-2xl mr-10" />
+          <div>
+            <button class="py-1 px-4 rounded bg-green-600">
+              <span v-if="game.price">
+                {{ game.price.formatted + game.price.sign }}
+              </span>
+              <span v-else>
+                FREE
+              </span>
+            </button>
+          </div>
+        </div>
         <div v-html="game.description" class="mb-6 max-w-md"></div>
       </div>
     </div>
