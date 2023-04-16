@@ -5,6 +5,7 @@
 - MariaDB 10
 - Node 18
 - Docker
+- Redis
 - Laravel 10
 - Octane Roadrunner
 - Fortify
