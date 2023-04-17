@@ -6,7 +6,7 @@ use App\Filters\Filter;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
 
-class GameFilter implements Filter
+final class GameFilter implements Filter
 {
     public function handle(Builder $query, Closure $next, $request)
     {

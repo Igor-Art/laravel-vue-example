@@ -6,7 +6,7 @@ use App\Dto\Reviews\ReviewFilterDto;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
 
-class UserFilter
+final class UserFilter
 {
     public function handle(Builder $query, Closure $next, ReviewFilterDto $request)
     {

@@ -6,7 +6,7 @@ use App\Filters\Filter;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
 
-class PriceFilter implements Filter
+final class PriceFilter implements Filter
 {
     public function handle(Builder $query, Closure $next, $request)
     {

@@ -6,7 +6,7 @@ use App\Filters\Filter;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
 
-class GenreFilter implements Filter
+final class GenreFilter implements Filter
 {
     public function handle(Builder $query, Closure $next, $request)
     {
