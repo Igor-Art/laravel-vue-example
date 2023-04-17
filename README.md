@@ -15,6 +15,7 @@
 - Vite
 - Yarn
 - Tailwind CSS
+- Font Awesome
 
 ### Presetting   
 ```
@@ -29,5 +30,5 @@ docker-compose up -d
 ```
 Go to http://localhost:8000
 
-Database: `localhost:3377`  
-Mailhog: http://localhost:8025
+Mailhog: http://localhost:8025  
+Database: `localhost:3377`
