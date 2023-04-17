@@ -13,8 +13,7 @@ const settings = useSettingsStore()
       <Headline icon="code">Disclaimer</Headline>
       <div class="pl-2 leading-6 font-light">
         <p>
-          Welcome to the Laravel-Vue example application.
-          This is not a realistic, but close to reality SPA-API app.
+          Welcome to the Laravel+Vue example close to a real SPA-API application.
         </p>
         <p>
           Designed for junior developers, show the main points of developing
