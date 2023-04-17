@@ -17,7 +17,6 @@ Your application may have a different implementation. Use any code of the app at
 - Telescope
 - Vue 3
 - Vite
-- Yarn
 - Tailwind CSS
 - Font Awesome
 
