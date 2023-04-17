@@ -55,7 +55,7 @@ fetchReviews()
           </RouterLink>
         </div>
         <div class="mb-6 flex items-center">
-          <RatingBar :rating="game.rating" class="text-2xl mr-10" />
+          <RatingBar v-if="game.rating" :rating="game.rating" class="text-2xl mr-10" />
           <div>
             <button class="py-1 px-4 rounded bg-green-600">
               <span v-if="game.price">
