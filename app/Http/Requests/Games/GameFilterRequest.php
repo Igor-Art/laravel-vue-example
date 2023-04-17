@@ -16,4 +16,12 @@ final class GameFilterRequest extends FormRequest
     {
         return GameFilterDto::create($this->getValidatorInstance());
     }
+
+    protected function prepareForValidation(): void
+    {
+        $this->replace([
+            'genres' => $this->genres ? explode(',', $this->genres) : null,
+            'is_free' => filter_var($this->is_free, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE),
+        ]);
+    }
 }

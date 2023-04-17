@@ -11,7 +11,9 @@ import {
   faStar,
   faComments,
   faAnglesRight,
+  faAnglesDown,
   faCode,
+  faGamepad,
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
@@ -24,8 +26,10 @@ library.add(
   faStar,
   faComments,
   faAnglesRight,
+  faAnglesDown,
   faCode,
   faGithub,
+  faGamepad,
 )
 
 export default FontAwesomeIcon

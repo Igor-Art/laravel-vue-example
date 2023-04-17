@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Filters\Game\GenreFilter;
+use App\Filters\Game\PriceFilter;
 use App\Filters\Game\SearchFilter;
 use App\Http\Requests\Games\GameFilterRequest;
 use App\Http\Resources\GameResource;
@@ -19,6 +20,7 @@ class GameController extends Controller
             ->filter($gameFilter, [
                 GenreFilter::class,
                 SearchFilter::class,
+                PriceFilter::class,
             ])
             ->orderBy('title')
             ->cursorPaginate(16);

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\GenreController;
 use App\Http\Controllers\ReviewController;
 use Illuminate\Support\Facades\Route;
 
@@ -13,5 +14,7 @@ Route::resource('games', GameController::class)
 Route::get('reviews/last', [ReviewController::class, 'last'])->name('reviews.last');
 
 Route::resource('reviews', ReviewController::class)->except(['create', 'edit']);
+
+Route::resource('genres', GenreController::class)->except(['create', 'edit']);
 
 Route::any('{any}', static fn () => abort(404))->where('any', '.*');

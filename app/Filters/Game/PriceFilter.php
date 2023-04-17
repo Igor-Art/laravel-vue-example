@@ -6,15 +6,12 @@ use App\Filters\Filter;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
 
-class GenreFilter implements Filter
+class PriceFilter implements Filter
 {
     public function handle(Builder $query, Closure $next, $request)
     {
-        if ($request->genres) {
-            $query->whereHas(
-                'genres',
-                static fn ($query) => $query->whereIn($query->qualifyColumn('id'), $request->genres)
-            );
+        if ($request->is_free) {
+            $query->whereNull($query->qualifyColumn('price'));
         }
 
         return $next($query);

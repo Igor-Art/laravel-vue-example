@@ -8,7 +8,7 @@ import AsyncLoading from '@/components/AsyncLoader/Loading.vue'
   <header class="bg-black bg-opacity-20 border-b border-black border-opacity-20">
     <HeaderNav />
   </header>
-  <main class="container pt-8 pb-2">
+  <main class="container pt-8 pb-10">
     <RouterView v-slot="{ Component, route }">
       <template v-if="Component">
         <Transition name="fade" mode="out-in">
