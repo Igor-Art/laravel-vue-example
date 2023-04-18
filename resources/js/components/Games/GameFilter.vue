@@ -27,13 +27,20 @@ fetchGenres()
         :multiple="true"
         :searchable="false"
         :close-on-select="false"
+        :max="10"
         track-by="id"
         label="title"
         placeholder="Choose genres"
       />
     </div>
     <div class="w-96 mb-5">
-      <input v-model="filterStore.search" type="search" class="input" placeholder="Search" />
+      <input
+        v-model="filterStore.search"
+        type="search"
+        class="input"
+        placeholder="Search"
+        maxlength="50"
+      />
     </div>
     <div class="mb-3">
       <Toggle
