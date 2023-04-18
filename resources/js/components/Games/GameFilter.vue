@@ -8,11 +8,24 @@ import { ref } from 'vue'
 const filterStore = useGameFilterStore()
 
 const genres = ref([])
+const searchValue = ref('')
+let debounceSearch = null
 
 const fetchGenres = async () => {
   const response = await http.get('api/genres')
 
   genres.value = response.data.data
+}
+
+const onInputSearch = () => {
+  clearTimeout(debounceSearch)
+  debounceSearch = setTimeout(() => {
+    const value = searchValue.value
+
+    if (!value || value.length > 2) {
+      filterStore.$patch({ search: value })
+    }
+  }, 500)
 }
 
 fetchGenres()
@@ -35,11 +48,12 @@ fetchGenres()
     </div>
     <div class="w-96 mb-5">
       <input
-        v-model="filterStore.search"
+        v-model="searchValue"
         type="search"
         class="input"
-        placeholder="Search"
+        placeholder="Search (min 3 letters)"
         maxlength="50"
+        @input="onInputSearch"
       />
     </div>
     <div class="mb-3">
