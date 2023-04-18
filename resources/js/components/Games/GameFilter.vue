@@ -39,7 +39,7 @@ fetchGenres()
         :options="genres"
         :multiple="true"
         :searchable="false"
-        :close-on-select="false"
+        :close-on-select="true"
         :max="10"
         track-by="id"
         label="title"
