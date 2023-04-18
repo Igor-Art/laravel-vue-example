@@ -16,7 +16,7 @@ const settings = useSettingsStore()
           Welcome to the Laravel+Vue example close to a real SPA-API application.
         </p>
         <p>
-          Designed for junior developers, show the main points of developing
+          Designed for junior developers, show the main points of full stack developing
           a classic web app with Auth, Roles, CRUD, Service Layer, etc.
         </p>
         <p>

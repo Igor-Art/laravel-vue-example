@@ -1,7 +1,7 @@
 # Laravel API & Vue SPA: Example App  
 
 Welcome to the Laravel+Vue example close to a real SPA-API application.  
-Designed for junior developers, show the main points of developing a classic web app with Auth, Roles, CRUD, Service Layer, etc.  
+Designed for junior developers, show the main points of full stack developing a classic web app with Auth, Roles, CRUD, Service Layer, etc.  
 Your application may have a different implementation. Use any code of the app at your own risk 😈.  
 
 ## Stack  
