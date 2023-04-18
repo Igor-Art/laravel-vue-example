@@ -35,3 +35,7 @@ Go to http://localhost:8000
 
 Mailhog: http://localhost:8025  
 Database: `localhost:3377`
+
+
+### Preview
+![home page](./preview.jpg?raw=true)
