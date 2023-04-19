@@ -7,6 +7,7 @@ export const useGameFilterStore = defineStore({
     genres: [],
     search: '',
     is_free: false,
+    loading: false,
   }),
 
   getters: {

@@ -32,7 +32,7 @@ fetchGenres()
 </script>
 
 <template>
-  <div>
+  <div :class="{ 'opacity-50 blur-xs pointer-events-none': filterStore.loading }">
     <div class="w-96 mb-3">
       <VueMultiselect
         v-model="filterStore.genres"
@@ -40,7 +40,7 @@ fetchGenres()
         :multiple="true"
         :searchable="false"
         :close-on-select="true"
-        :max="10"
+        :max="5"
         track-by="id"
         label="title"
         placeholder="Choose genres"

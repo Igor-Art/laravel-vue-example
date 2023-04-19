@@ -13,6 +13,9 @@ module.exports = {
       padding: '1rem',
     },
     extend: {
+      blur: {
+        xs: '2px',
+      },
       colors: {
         primary: colors.gray['200'],
         secondary: colors.gray['400'],

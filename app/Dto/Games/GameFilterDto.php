@@ -16,7 +16,7 @@ readonly final class GameFilterDto extends BaseDto implements FilterRequest
     public static function getRules(): array
     {
         return [
-            'genres' => ['nullable', 'array', 'max:10'],
+            'genres' => ['nullable', 'array', 'max:5'],
             'genres.*' => ['required', 'integer', 'min:1'],
             'search' => ['nullable', 'string', 'min:2', 'max:50'],
             'is_free' => ['nullable', 'boolean'],

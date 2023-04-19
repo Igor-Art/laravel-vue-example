@@ -15,44 +15,39 @@ const games = reactive({
 })
 
 const loadMore = async () => {
-  const response = await fetchGames({
-    cursor: games.meta.next_cursor,
-  })
-
-  games.meta = response.meta
-  games.items = games.items.concat(response.items)
-}
-
-const load = async (params = {}) => {
-  const response = await fetchGames(params)
-
-  games.meta = response.meta
-  games.items = response.items
+  await fetchGames({ cursor: games.meta.next_cursor })
 }
 
 const fetchGames = async (params = {}) => {
+  if (filterStore.loading) {
+    return
+  }
+
   params = Object.assign({}, {
     genres: filterStore.$state.genres.map(item => item.id).join(','),
     is_free: filterStore.$state.is_free ? 1 : 0,
     search: filterStore.$state.search,
   }, params)
 
-
-  loading.value = true
+  filterStore.$patch({ loading: true })
 
   const response = await http.get('/api/games', { params })
 
-  setTimeout(() => loading.value = false, 300)
+  setTimeout(() => filterStore.$patch({ loading: false }), 300)
 
-  return {
-    meta: response.data.meta,
-    items: response.data.data,
-  }
+  games.meta = response.data.meta
+  games.items = params.cursor
+    ? games.items.concat(response.data.data)
+    : response.data.data
 }
 
-await load()
+await fetchGames()
 
-filterStore.$subscribe(() => load())
+filterStore.$subscribe((mutation) => {
+  if (!mutation.payload || 'loading' in mutation.payload === false) {
+    fetchGames()
+  }
+})
 </script>
 
 <template>
@@ -61,11 +56,11 @@ filterStore.$subscribe(() => load())
       {{ games.items.length }} games displayed
     </div>
     <div class="relative">
-      <div class="flex flex-wrap transition" :class="{ 'blur-sm grayscale-[50%]': loading }">
+      <div class="flex flex-wrap transition" :class="{ 'blur-sm pointer-events-none grayscale-[50%]': filterStore.loading }">
         <GameCard v-for="game in games.items" :key="game.id" :game="game" />
       </div>
-      <div v-show="loading" class="absolute top-10 bottom-0 left-0 right-0 flex justify-center z-10">
-        <AsyncLoading />
+      <div v-show="filterStore.loading" class="absolute top-10 bottom-0 left-0 right-0 flex items-start justify-center z-10">
+        <AsyncLoading class="sticky top-10" />
       </div>
     </div>
     <div v-if="games.meta.next_cursor" class="flex justify-center pt-6 pb-10">
