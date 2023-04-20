@@ -7,6 +7,12 @@ const router = createRouter({
   routes,
   history: createWebHistory(),
   scrollBehavior (to, from, savedPosition) {
+    if (from
+      && (Object.keys(to.query).length || Object.keys(from.query).length)
+      && to.fullPath.split('?')[0] === from.fullPath.split('?')[0]) {
+      return
+    }
+
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(savedPosition ? savedPosition : { top: 0 })
