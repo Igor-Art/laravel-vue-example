@@ -64,7 +64,14 @@ filterStore.$subscribe((mutation) => {
       </div>
     </div>
     <div v-if="games.meta.next_cursor" class="flex justify-center pt-6 pb-10">
-      <button @click="loadMore" class="inline-block py-2 px-4 border border-primary border-opacity-50 rounded transition hover:border-sky-400 hover:bg-sky-600">
+      <button
+        :disabled="filterStore.loading"
+        @click="loadMore"
+        class="inline-block py-2 px-4
+          border border-primary border-opacity-50 rounded
+          transition hover:border-sky-400 hover:bg-sky-600
+          disabled:border-primary disabled:border-opacity-50 disabled:bg-transparent"
+      >
         <font-awesome-icon icon="angles-down" class="mr-2" />
         <span class="mr-2">Load more</span>
         <font-awesome-icon icon="angles-down" />
