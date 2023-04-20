@@ -1,7 +1,7 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import HeaderNav from '@/components/Layout/HeaderNav.vue'
-import AsyncLoading from '@/components/AsyncLoader/Loading.vue'
+import AsyncLoading from '@/components/AsyncLoader/AsyncLoading.vue'
 </script>
 
 <template>

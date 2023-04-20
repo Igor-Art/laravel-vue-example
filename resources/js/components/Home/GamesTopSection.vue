@@ -1,11 +1,11 @@
 <script setup>
 import { defineAsyncComponent, onErrorCaptured, ref } from 'vue'
-import AsyncLoading from '@/components/AsyncLoader/Loading.vue'
-import ErrorLoading from '@/components/AsyncLoader/ErrorLoading.vue'
+import AsyncLoading from '@/components/AsyncLoader/AsyncLoading.vue'
+import ErrorLoading from '@/components/AsyncLoader/ErrorAsyncLoading.vue'
 import Headline from '@/components/Headline.vue'
 import MoreLink from '@/components/MoreLink.vue'
 
-const GamesTopList = defineAsyncComponent(() => import('@/components/Games/TopList.vue'))
+const GameTopList = defineAsyncComponent(() => import('@/components/Games/GameTopList.vue'))
 
 const error = ref('')
 
@@ -22,7 +22,7 @@ onErrorCaptured(() => {
     </div>
   </Headline>
   <Suspense>
-    <GamesTopList />
+    <GameTopList />
     <template #fallback>
       <ErrorLoading v-if="error" :message="error" />
       <AsyncLoading v-else />

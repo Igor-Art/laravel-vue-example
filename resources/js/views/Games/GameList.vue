@@ -1,8 +1,8 @@
 <script setup>
 import { defineAsyncComponent, onErrorCaptured, ref } from 'vue'
 import GameFilter from '@/components/Games/GameFilter.vue'
-import ErrorLoading from '@/components/AsyncLoader/ErrorLoading.vue'
-import AsyncLoading from '@/components/AsyncLoader/Loading.vue'
+import ErrorLoading from '@/components/AsyncLoader/ErrorAsyncLoading.vue'
+import AsyncLoading from '@/components/AsyncLoader/AsyncLoading.vue'
 import Headline from '@/components/Headline.vue'
 
 const GameFilterResults = defineAsyncComponent(() => import('@/components/Games/GameFilterResults.vue'))

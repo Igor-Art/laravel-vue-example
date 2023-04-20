@@ -1,7 +1,7 @@
 <script setup>
 import { reactive } from 'vue'
 import http from '@/http'
-import ReviewCard from '@/components/Reviews/Card.vue'
+import ReviewCard from '@/components/Reviews/ReviewCard.vue'
 import MoreLink from '@/components/MoreLink.vue'
 
 const reviews = reactive({

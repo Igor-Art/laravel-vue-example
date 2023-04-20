@@ -2,8 +2,8 @@
 import { reactive, ref } from 'vue'
 import http from '@/http'
 import { useGameFilterStore } from '@/stores/game-filter'
-import GameCard from '@/components/Games/Card.vue'
-import AsyncLoading from '@/components/AsyncLoader/Loading.vue'
+import GameCard from '@/components/Games/GameCard.vue'
+import AsyncLoading from '@/components/AsyncLoader/AsyncLoading.vue'
 
 const filterStore = useGameFilterStore()
 

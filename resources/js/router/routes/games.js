@@ -2,7 +2,7 @@ export default [
   {
     path: '/games',
     name: 'games.index',
-    component: () => import('@/views/Games/List.vue'),
+    component: () => import('@/views/Games/GameList.vue'),
     meta: {
       auth: null,
     },
@@ -10,7 +10,7 @@ export default [
   {
     path: '/games/:slug',
     name: 'games.show',
-    component: () => import('@/views/Games/Show.vue'),
+    component: () => import('@/views/Games/GameShow.vue'),
     meta: {
       auth: null,
     },

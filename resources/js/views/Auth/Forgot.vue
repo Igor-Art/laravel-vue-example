@@ -2,7 +2,7 @@
 import { RouterLink } from 'vue-router'
 import { Form, Field, ErrorMessage, Yup } from '@/form'
 import { useAuthStore } from '@/stores/auth'
-import AuthCard from '@/components/Auth/Card.vue'
+import AuthCard from '@/components/Auth/AuthCard.vue'
 
 const schema = Yup.object().shape({
   email: Yup.string().required().email(),

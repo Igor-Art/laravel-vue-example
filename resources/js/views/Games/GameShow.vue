@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 import http from '@/http'
 import RatingBar from '@/components/RatingBar.vue'
 import Headline from '@/components/Headline.vue'
-import Card from '@/components/Reviews/Card.vue'
+import Card from '@/components/Reviews/ReviewCard.vue'
 
 const route = useRoute()
 const game = ref({})
