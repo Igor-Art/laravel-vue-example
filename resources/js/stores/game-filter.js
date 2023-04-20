@@ -1,20 +1,27 @@
 import { defineStore } from 'pinia'
+import { useRoute } from 'vue-router'
+import { ref } from 'vue'
 
-export const useGameFilterStore = defineStore({
-  id: 'gameFilter',
+export const useGameFilterStore = defineStore('gameFilter', () => {
+  const route = useRoute()
 
-  state: () => ({
-    genres: [],
-    search: '',
-    is_free: false,
-    loading: false,
-  }),
+  const genres = ref(
+    route.query.genres
+      ? route.query.genres
+        .split(',')
+        .splice(0, 5)
+        .map(id => +id)
+      : []
+  )
 
-  getters: {
-    //
-  },
+  const search = ref(route.query.search || '')
+  const is_free = ref(route.query.is_free ? true : false)
+  const loading = ref(false)
 
-  actions: {
-    //
+  return {
+    genres,
+    search,
+    is_free,
+    loading,
   }
 })

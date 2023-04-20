@@ -1,11 +1,14 @@
 <script setup>
 import { reactive, ref } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
 import http from '@/http'
 import { useGameFilterStore } from '@/stores/game-filter'
 import GameCard from '@/components/Games/GameCard.vue'
 import AsyncLoading from '@/components/AsyncLoader/AsyncLoading.vue'
 
 const filterStore = useGameFilterStore()
+const router = useRouter()
+const route = useRoute()
 
 const loading = ref(false)
 
@@ -24,7 +27,7 @@ const fetchGames = async (params = {}) => {
   }
 
   params = Object.assign({}, {
-    genres: filterStore.$state.genres.map(item => item.id).join(','),
+    genres: filterStore.$state.genres.join(','),
     is_free: filterStore.$state.is_free ? 1 : 0,
     search: filterStore.$state.search,
   }, params)
@@ -34,6 +37,12 @@ const fetchGames = async (params = {}) => {
   const response = await http.get('/api/games', { params })
 
   setTimeout(() => filterStore.$patch({ loading: false }), 300)
+
+  const query = Object
+    .entries(Object.assign({}, params, { cursor: null }))
+    .reduce((a, [key, val]) => (val ? (a[key] = val, a) : a), {})
+
+  router.replace({ name: 'games.index', query })
 
   games.meta = response.data.meta
   games.items = params.cursor

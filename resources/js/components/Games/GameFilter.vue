@@ -8,7 +8,7 @@ import { ref } from 'vue'
 const filterStore = useGameFilterStore()
 
 const genres = ref([])
-const searchValue = ref('')
+const searchValue = ref(filterStore.search)
 let debounceSearch = null
 
 const fetchGenres = async () => {
@@ -28,7 +28,7 @@ const onInputSearch = () => {
   }, 500)
 }
 
-fetchGenres()
+await fetchGenres()
 </script>
 
 <template>
@@ -36,13 +36,12 @@ fetchGenres()
     <div class="w-96 mb-3">
       <VueMultiselect
         v-model="filterStore.genres"
-        :options="genres"
+        :options="genres.map(genre => +genre.id)"
         :multiple="true"
         :searchable="false"
         :close-on-select="true"
         :max="5"
-        track-by="id"
-        label="title"
+        :customLabel="(id) => genres.find(genre => genre.id == id)?.title || '--'"
         placeholder="Choose genres"
       />
     </div>
