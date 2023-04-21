@@ -6,6 +6,7 @@ import App from '@/App.vue'
 import router from '@/router'
 import ToastConfig from '@/config/toast'
 import FontAwesomeIcon from '@/plugins/font-awesome'
+import Date from '@/plugins/date'
 
 import 'vue-toastification/dist/index.css'
 import '@/../css/app.css'
@@ -16,5 +17,6 @@ app.use(createPinia())
 app.component('font-awesome-icon', FontAwesomeIcon)
 app.use(router)
 app.use(Toast, ToastConfig)
+app.use(Date)
 
 app.mount('#app')
