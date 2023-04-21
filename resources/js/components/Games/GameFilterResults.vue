@@ -10,8 +10,6 @@ const filterStore = useGameFilterStore()
 const router = useRouter()
 const route = useRoute()
 
-const loading = ref(false)
-
 const games = reactive({
   meta: {},
   items: [],
