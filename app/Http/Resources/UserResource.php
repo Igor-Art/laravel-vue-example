@@ -14,6 +14,9 @@ class UserResource extends JsonResource
             'name' => $this->name,
             'email' => $this->email,
             'verified' => (bool) $this->email_verified_at,
+            'registered_at' => $this->created_at,
+            'reviews_count' => $this->reviews_count,
+            'wishlist_count' => $this->wishlist_count,
         ];
     }
 }

@@ -12,7 +12,7 @@ const searchValue = ref(filterStore.search)
 let debounceSearch = null
 
 const fetchGenres = async () => {
-  const response = await http.get('api/genres')
+  const response = await http.get('/api/genres')
 
   genres.value = response.data.data
 }
