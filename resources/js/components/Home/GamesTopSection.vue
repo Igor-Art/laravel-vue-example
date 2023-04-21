@@ -18,7 +18,7 @@ onErrorCaptured(() => {
   <Headline icon="star">
     <div class="flex justify-between items-center">
       <span>Top Games</span>
-      <MoreLink to="/" label="Show all" class="text-sm mr-1" />
+      <MoreLink :to="{ name: 'games.index' }" label="Show all" class="text-sm mr-1" />
     </div>
   </Headline>
   <Suspense>
