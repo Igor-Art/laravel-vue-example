@@ -1,19 +1,33 @@
 <script setup>
 import { reactive, ref } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 import http from '@/http'
 import { useGameFilterStore } from '@/stores/game-filter'
 import GameCard from '@/components/Games/GameCard.vue'
 import AsyncLoading from '@/components/AsyncLoader/AsyncLoading.vue'
 
-const filterStore = useGameFilterStore()
-const router = useRouter()
 const route = useRoute()
+const filterStore = useGameFilterStore()
+filterStore.initFilter(route.query)
 
 const games = reactive({
   meta: {},
   items: [],
 })
+
+const updateQueryUri = params => {
+  const query = Object
+    .entries(Object.assign({}, params, { cursor: null }))
+    .reduce((a, [key, val]) => (val ? (a[key] = val, a) : a), {})
+
+  const queryString = decodeURIComponent(new URLSearchParams(query).toString())
+
+  history.pushState(
+    {},
+    null,
+    route.path + (queryString ? '?' + queryString : '')
+  )
+}
 
 const loadMore = async () => {
   await fetchGames({ cursor: games.meta.next_cursor })
@@ -36,11 +50,7 @@ const fetchGames = async (params = {}) => {
 
   setTimeout(() => filterStore.$patch({ loading: false }), 300)
 
-  const query = Object
-    .entries(Object.assign({}, params, { cursor: null }))
-    .reduce((a, [key, val]) => (val ? (a[key] = val, a) : a), {})
-
-  router.replace({ name: 'games.index', query })
+  updateQueryUri(params)
 
   games.meta = response.data.meta
   games.items = params.cursor

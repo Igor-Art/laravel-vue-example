@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useToast } from 'vue-toastification'
 import { useAuthStore } from '@/stores/auth'
+import { useGameFilterStore } from '@/stores/game-filter'
 import routes from './routes'
 
 const router = createRouter({
@@ -35,6 +36,10 @@ router.beforeResolve(async to => {
   if (to.query.verified) {
     useToast().success('You have successfully verified your email')
     router.replace({ query: null })
+
+  } else if (to.name === 'games.index' && Object.keys(to.query).length) {
+    const filterStore = useGameFilterStore()
+    filterStore.initFilter(to.query)
   }
 })
 

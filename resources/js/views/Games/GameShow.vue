@@ -48,7 +48,7 @@ fetchReviews()
           <RouterLink
             v-for="genre in game.genres || []"
             :key="genre.id"
-            :to="{ name: 'games.index' }"
+            :to="{ name: 'games.index', query: { genres: genre.id } }"
             class="inline-block mb-2 py-1 px-2 mr-2 rounded text-xs bg-sky-700 hover:text-primary hover:bg-sky-500"
           >
             {{ genre.title }}
