@@ -7,9 +7,7 @@ const router = createRouter({
   routes,
   history: createWebHistory(),
   scrollBehavior (to, from, savedPosition) {
-    if (from
-      && (Object.keys(to.query).length || Object.keys(from.query).length)
-      && to.fullPath.split('?')[0] === from.fullPath.split('?')[0]) {
+    if (from && to.fullPath.split('?')[0] === from.fullPath.split('?')[0]) {
       return
     }
 
