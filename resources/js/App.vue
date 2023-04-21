@@ -12,7 +12,7 @@ import AsyncLoading from '@/components/AsyncLoader/AsyncLoading.vue'
     <RouterView v-slot="{ Component, route }">
       <template v-if="Component">
         <Transition name="fade" mode="out-in">
-          <KeepAlive>
+          <KeepAlive exclude="GameList">
             <Suspense>
               <Component :is="Component" :key="route.path" />
               <template #fallback>
