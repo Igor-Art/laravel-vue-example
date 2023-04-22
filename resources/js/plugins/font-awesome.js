@@ -2,7 +2,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 /**
- * https://fontawesome.com/icons
+ * https://fontawesome.com/search?o=r&m=free
  */
 
 import {
@@ -14,6 +14,7 @@ import {
   faAnglesDown,
   faCode,
   faGamepad,
+  faCheckDouble,
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
@@ -30,6 +31,7 @@ library.add(
   faCode,
   faGithub,
   faGamepad,
+  faCheckDouble,
 )
 
 export default FontAwesomeIcon

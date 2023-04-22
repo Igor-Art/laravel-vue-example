@@ -19,7 +19,6 @@ Route::resource('reviews', ReviewController::class)->except(['create', 'edit']);
 Route::resource('genres', GenreController::class)->except(['create', 'edit']);
 
 Route::resource('users', UserController::class)
-    ->parameters(['users' => 'user:name'])
     ->except(['create', 'store', 'edit']);
 
 Route::any('{any}', static fn () => abort(404))->where('any', '.*');

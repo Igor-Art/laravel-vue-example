@@ -8,30 +8,31 @@ const route = useRoute()
 
 const user = ref({})
 
-const fetchUser = async (name) => {
-  const response = await http.get(`/api/users/${name}`)
+const fetchUser = async (id) => {
+  const response = await http.get(`/api/users/${id}`)
 
   user.value = response.data.data
 }
 
-await fetchUser(route.params.name)
+await fetchUser(route.params.id)
 </script>
 
 <template>
   <div class="pt-10">
-    <div class="flex">
-      <div class="mr-6 text-center">
-        <div class="w-32 mb-4">
-          <img :src="UserDefaultAvatar" :alt="user.name" />
-        </div>
-        <div>Reviews: {{ user.reviews_count || 0 }}</div>
-        <div>Wishlist: {{ user.wishlist_count || 0 }}</div>
+    <div class="flex items-center mb-10">
+      <div class="mr-10 w-32">
+        <img :src="UserDefaultAvatar" :alt="user.name" />
       </div>
-      <div class="pt-5">
-        <div class="text-2xl">{{ user.name }}</div>
-        <div class="mb-3 text-base">{{ user.email }}</div>
-        <div>Registered: {{ $date.formatDate(user.registered_at) }} ({{ $date.ago(user.registered_at) }})</div>
+      <div>
+        <div class="mb-2 text-2xl">{{ user.name }}</div>
+        <div class="flex items-start mb-3 text-base" :title="user.verified ? 'Verified' : 'Unverified'">
+          <span>{{ user.email || 'email hidden' }}</span>
+          <font-awesome-icon icon="check-double" class="ml-2 text-sm" />
+        </div>
+        <div>Registered {{ $date.formatDate(user.registered_at) }} ({{ $date.ago(user.registered_at) }})</div>
       </div>
     </div>
+    <div>Reviews: {{ user.reviews_count || 0 }}</div>
+    <div>Wishlist: {{ user.wishlist_count || 0 }}</div>
   </div>
 </template>

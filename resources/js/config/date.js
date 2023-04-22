@@ -1,7 +1,7 @@
 export default {
   format: {
-    dateTime: 'dd MMMM yy, HH:mm',
-    date: 'dd MMMM yy',
+    dateTime: 'dd MMMM yyyy, HH:mm',
+    date: 'dd MMMM yyyy',
     time: 'HH:mm',
   }
 }

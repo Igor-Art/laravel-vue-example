@@ -1,6 +1,6 @@
 export default [
   {
-    path: '/profile/:name',
+    path: '/profile/:id',
     name: 'profile.show',
     component: () => import('@/views/Profile/ProfileShow.vue'),
     meta: {
