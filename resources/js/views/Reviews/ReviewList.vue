@@ -1,8 +1,13 @@
 <script setup>
-import { reactive } from 'vue'
+import { reactive, watch, computed } from 'vue'
+import { useRoute } from 'vue-router'
 import http from '@/http'
 import ReviewCard from '@/components/Reviews/ReviewCard.vue'
 import Headline from '@/components/Headline.vue'
+import Pagination from '@/components/Pagination.vue'
+import EmptyList from '@/components/EmptyList.vue'
+
+const route = useRoute()
 
 const reviews = reactive({
   meta: {},
@@ -10,25 +15,46 @@ const reviews = reactive({
 })
 
 const fetchReviews = async () => {
-  const response = await http.get('/api/reviews')
+  const response = await http.get('/api/reviews', {
+    params: {
+      page: route.query.page || 1,
+    }
+  })
 
   reviews.meta = response.data.meta
   reviews.items = response.data.data
 }
 
 await fetchReviews()
+
+watch(() => route.query.page, () => {
+  fetchReviews()
+})
 </script>
 
 <template>
   <div>
     <Headline icon="comments" class="!mb-10">Reviews</Headline>
-    <div class="max-w-lg">
-      <ReviewCard
-        v-for="review in reviews.items"
-        :key="review.id"
-        :review="review"
-        class="mb-6"
+    <div class="mb-4">
+      Total: {{ reviews.meta.total }}
+    </div>
+    <div v-if="reviews.items.length">
+      <div class="max-w-lg">
+        <ReviewCard
+          v-for="review in reviews.items"
+          :key="review.id"
+          :review="review"
+          class="mb-6"
+        />
+      </div>
+      <Pagination
+        :total="reviews.meta.total"
+        :per="reviews.meta.per_page"
+        class="mt-10"
       />
     </div>
+    <EmptyList v-else>
+      Review list is empty
+    </EmptyList>
   </div>
 </template>
