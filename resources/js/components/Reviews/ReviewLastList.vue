@@ -28,7 +28,7 @@ await fetchReviews()
       />
     </div>
     <div class="text-right pr-2">
-      <MoreLink to="/" label="Show all" />
+      <MoreLink :to="{ name: 'reviews.index' }" label="Show all" />
     </div>
   </div>
 </template>

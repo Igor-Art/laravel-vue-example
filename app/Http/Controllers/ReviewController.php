@@ -16,7 +16,7 @@ class ReviewController extends Controller
         $filterRequest = $request->getDto();
 
         $reviews = Review::query()
-            ->with('user')
+            ->with(['game', 'user'])
             ->orderByDesc('created_at')
             ->filter($filterRequest, [
                 GameFilter::class,

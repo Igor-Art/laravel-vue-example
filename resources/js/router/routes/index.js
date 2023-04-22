@@ -2,6 +2,7 @@ import HomeView from '@/views/Home.vue'
 import authRoutes from './auth'
 import gamesRoutes from './games'
 import profileRoutes from './profile'
+import reviewsRoutes from './reviews'
 
 export default [
   {
@@ -15,6 +16,7 @@ export default [
   ...authRoutes,
   ...gamesRoutes,
   ...profileRoutes,
+  ...reviewsRoutes,
   {
     path: '/:pathMatch(.*)',
     name: 'not-found',
