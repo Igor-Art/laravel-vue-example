@@ -15,6 +15,7 @@ class ReviewResource extends JsonResource
             'user' => new UserResource($this->whenLoaded('user')),
             'rating' => $this->rating,
             'content' => $this->content,
+            'published_at' => $this->created_at,
         ];
     }
 }

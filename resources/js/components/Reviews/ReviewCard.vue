@@ -19,9 +19,12 @@ defineProps({
         </RouterLink>
       </div>
       <RatingBar :rating="review.rating" icon-class="w-2.5" class="mr-4 text-base" />
-      <RouterLink v-if="review.game" :to="{ name: 'games.show', params: { slug: review.game.slug } }" class="underline">
+      <RouterLink v-if="review.game" :to="{ name: 'games.show', params: { slug: review.game.slug } }" class="underline mr-4">
         {{ review.game.title }}
       </RouterLink>
+      <div>
+        {{ $date.ago(review.published_at) }}
+      </div>
     </div>
     <div v-html="review.content" class="font-light"></div>
   </div>
