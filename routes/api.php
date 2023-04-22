@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('games/top', [GameController::class, 'top'])->name('games.top');
+Route::get('games/{game}/reviews', [GameController::class, 'reviews'])->name('games.show.reviews');
 
 Route::resource('games', GameController::class)
     ->parameters(['games' => 'game:slug'])

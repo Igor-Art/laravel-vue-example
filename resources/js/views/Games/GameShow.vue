@@ -20,11 +20,7 @@ const fetchGame = async () => {
 }
 
 const fetchReviews = async () => {
-  const response = await http.get('/api/reviews', {
-    params: {
-      game_id: game.value.id,
-    }
-  })
+  const response = await http.get(`/api/games/${game.value.id}/reviews`)
 
   reviews.meta = response.data.meta
   reviews.items = response.data.data

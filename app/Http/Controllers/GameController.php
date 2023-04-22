@@ -7,6 +7,7 @@ use App\Filters\Game\PriceFilter;
 use App\Filters\Game\SearchFilter;
 use App\Http\Requests\Games\GameFilterRequest;
 use App\Http\Resources\GameResource;
+use App\Http\Resources\ReviewResource;
 use App\Models\Game;
 use Illuminate\Http\Request;
 
@@ -38,9 +39,13 @@ class GameController extends Controller
         return GameResource::collection($games);
     }
 
-    public function store(Request $request)
+    public function reviews(Game $game)
     {
-        //
+        $reviews = $game->reviews()
+            ->with(['user'])
+            ->paginate(5);
+
+        return ReviewResource::collection($reviews);
     }
 
     public function show(Game $game)
@@ -48,6 +53,11 @@ class GameController extends Controller
         $game->load(['genres']);
 
         return new GameResource($game);
+    }
+
+    public function store(Request $request)
+    {
+        //
     }
 
     public function update(Request $request, Game $game)
