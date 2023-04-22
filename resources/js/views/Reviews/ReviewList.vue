@@ -1,5 +1,5 @@
 <script setup>
-import { reactive, watch, computed } from 'vue'
+import { reactive, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import http from '@/http'
 import ReviewCard from '@/components/Reviews/ReviewCard.vue'
