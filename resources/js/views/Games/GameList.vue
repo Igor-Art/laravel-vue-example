@@ -1,5 +1,6 @@
 <script setup>
 import { defineAsyncComponent, onErrorCaptured, ref } from 'vue'
+import { useMeta } from '@/plugins/meta'
 import GameFilter from '@/components/Games/GameFilter.vue'
 import ErrorLoading from '@/components/AsyncLoader/ErrorAsyncLoading.vue'
 import AsyncLoading from '@/components/AsyncLoader/AsyncLoading.vue'
@@ -12,6 +13,8 @@ const error = ref('')
 onErrorCaptured(() => {
   error.value = 'Error loading games, please try again later'
 })
+
+useMeta().setTitle('Games')
 </script>
 
 <template>

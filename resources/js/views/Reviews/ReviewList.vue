@@ -2,6 +2,7 @@
 import { reactive, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import http from '@/http'
+import { useMeta } from '@/plugins/meta'
 import ReviewCard from '@/components/Reviews/ReviewCard.vue'
 import Headline from '@/components/Headline.vue'
 import Pagination from '@/components/Pagination.vue'
@@ -24,6 +25,8 @@ const fetchReviews = async () => {
   reviews.meta = response.data.meta
   reviews.items = response.data.data
 }
+
+useMeta().setTitle('Reviews')
 
 await fetchReviews()
 

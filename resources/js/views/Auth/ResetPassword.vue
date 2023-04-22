@@ -3,6 +3,7 @@ import { RouterLink, useRoute } from 'vue-router'
 import { Form, Field, ErrorMessage, Yup } from '@/form'
 import { useAuthStore } from '@/stores/auth'
 import AuthCard from '@/components/Auth/AuthCard.vue'
+import { useMeta } from '@/plugins/meta'
 
 const route = useRoute()
 
@@ -19,6 +20,8 @@ async function onSubmit (values) {
 
   await authStore.resetPassword(values)
 }
+
+useMeta().setTitle('Reset password')
 </script>
 
 <template>

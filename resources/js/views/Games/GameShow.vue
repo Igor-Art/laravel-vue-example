@@ -2,6 +2,7 @@
 import { ref, reactive } from 'vue'
 import { useRoute } from 'vue-router'
 import http from '@/http'
+import { useMeta } from '@/plugins/meta'
 import RatingBar from '@/components/RatingBar.vue'
 import Headline from '@/components/Headline.vue'
 import Card from '@/components/Reviews/ReviewCard.vue'
@@ -27,6 +28,9 @@ const fetchReviews = async () => {
 }
 
 await fetchGame()
+
+useMeta().setTitle(game.value.title)
+
 fetchReviews()
 
 </script>

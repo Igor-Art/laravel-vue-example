@@ -3,6 +3,7 @@ import { Form, Field, ErrorMessage, Yup } from '@/form'
 import { useAuthStore } from '@/stores/auth'
 import AuthCard from '@/components/Auth/AuthCard.vue'
 import { RouterLink } from 'vue-router'
+import { useMeta } from '@/plugins/meta'
 
 const schema = Yup.object().shape({
   email: Yup.string().required().email(),
@@ -16,6 +17,8 @@ async function onSubmit (values) {
 
   await authStore.register(values)
 }
+
+useMeta().setTitle('Register')
 </script>
 
 <template>

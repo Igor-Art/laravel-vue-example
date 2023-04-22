@@ -1,5 +1,8 @@
 <script setup>
 import Headline from '@/components/Headline.vue'
+import { useMeta } from '@/plugins/meta'
+
+useMeta().setTitle('404')
 </script>
 
 <template>

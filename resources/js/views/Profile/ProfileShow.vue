@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 import http from '@/http'
+import { useMeta } from '@/plugins/meta'
 import UserDefaultAvatar from '@images/user-default.png'
 
 const route = useRoute()
@@ -15,6 +16,8 @@ const fetchUser = async (id) => {
 }
 
 await fetchUser(route.params.id)
+
+useMeta().setTitle(user.value.name)
 </script>
 
 <template>

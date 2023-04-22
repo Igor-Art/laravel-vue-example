@@ -3,8 +3,11 @@ import GamesTopSection from '@/components/Home/GamesTopSection.vue'
 import ReviewsLastSection from '@/components/Home/ReviewsLastSection.vue'
 import Headline from '@/components/Headline.vue'
 import { useSettingsStore } from '@/stores/settings'
+import { useMeta } from '@/plugins/meta'
 
 const settings = useSettingsStore()
+
+useMeta().setTitle('Home')
 </script>
 
 <template>
