@@ -16,6 +16,9 @@ const settings = useSettingsStore()
       <RouterLink :to="{ name: 'games.index' }" class="item">
         Games
       </RouterLink>
+      <RouterLink :to="{ name: 'reviews.index' }" class="item">
+        Reviews
+      </RouterLink>
     </div>
     <div class="flex items-center">
       <a
