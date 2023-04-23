@@ -28,9 +28,10 @@ useMeta().setTitle(user.value.name)
       </div>
       <div>
         <div class="mb-2 text-2xl">{{ user.name }}</div>
-        <div class="flex items-start mb-3 text-base" :title="user.verified ? 'Verified' : 'Unverified'">
-          <span>{{ user.email || 'email hidden' }}</span>
-          <font-awesome-icon icon="check-double" class="ml-2 text-sm" />
+        <div class="flex items-start mb-3 text-sm text-secondary" :title="user.verified ? 'Verified' : 'Unverified'">
+          <span v-if="user.email">{{ user.email }}</span>
+          <span v-else>email hidden</span>
+          <font-awesome-icon v-if="user.verified" icon="check-double" class="ml-2 text-sm text-primary" />
         </div>
         <div>Registered {{ $date.formatDate(user.registered_at) }} ({{ $date.ago(user.registered_at) }})</div>
       </div>
