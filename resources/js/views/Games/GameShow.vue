@@ -27,6 +27,12 @@ const fetchReviews = async () => {
   reviews.items = response.data.data
 }
 
+const toggleWishlist = async () => {
+  await http.post(`/api/wishlist/toggle/${game.value.id}`)
+
+  game.value.has_wishlist = !game.value.has_wishlist
+}
+
 await fetchGame()
 
 useMeta().setTitle(game.value.title)
@@ -56,7 +62,7 @@ fetchReviews()
         </div>
         <div class="mb-6 flex items-center">
           <RatingBar v-if="game.rating" :rating="game.rating" class="text-2xl mr-10" />
-          <div>
+          <div class="mr-6">
             <button class="py-1 px-4 rounded bg-green-600">
               <span v-if="game.price">
                 {{ game.price.formatted + game.price.sign }}
@@ -64,6 +70,17 @@ fetchReviews()
               <span v-else>
                 FREE
               </span>
+            </button>
+          </div>
+          <div>
+            <button
+              class="button-wishlist py-1 px-4 border border-white border-opacity-40 rounded hover:bg-pink-700 hover:border-pink-500 transition"
+              :class="{ 'bg-pink-700 border-pink-500': game.has_wishlist }"
+              @click="toggleWishlist()"
+            >
+              <font-awesome-icon icon="heart" />
+              <span v-if="!game.has_wishlist" class="ml-2">Add to wishlist</span>
+              <span v-else class="ml-2 hidden" data-label="remove">Remove from wishlist</span>
             </button>
           </div>
         </div>
@@ -86,3 +103,9 @@ fetchReviews()
     </div>
   </div>
 </template>
+
+<style scoped>
+.button-wishlist:hover [data-label="remove"] {
+  @apply inline;
+}
+</style>

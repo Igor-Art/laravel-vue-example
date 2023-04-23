@@ -16,6 +16,7 @@ import {
   faGamepad,
   faCheckDouble,
   faFileExcel,
+  faHeart,
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
@@ -34,6 +35,7 @@ library.add(
   faGamepad,
   faCheckDouble,
   faFileExcel,
+  faHeart,
 )
 
 export default FontAwesomeIcon

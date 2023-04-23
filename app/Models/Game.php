@@ -35,6 +35,11 @@ class Game extends Model
         return $this->hasMany(Review::class);
     }
 
+    public function userWishlist()
+    {
+        return $this->hasOne(Wishlist::class);
+    }
+
     protected function fullLink(): Attribute
     {
         return Attribute::make(

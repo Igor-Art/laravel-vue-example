@@ -48,9 +48,13 @@ class GameController extends Controller
         return ReviewResource::collection($reviews);
     }
 
-    public function show(Game $game)
+    public function show(Request $request, Game $game)
     {
         $game->load(['genres']);
+
+        if ($request->user()) {
+            $game->loadExists(['userWishlist' => fn ($query) => $query->where('user_id', $request->user()->id)]);
+        }
 
         return new GameResource($game);
     }
