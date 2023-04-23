@@ -10,6 +10,7 @@ export const useAuthStore = defineStore({
 
   state: () => ({
     user: JSON.parse(localStorage.getItem('user')),
+    redirectTo: null,
   }),
 
   getters: {
@@ -31,17 +32,21 @@ export const useAuthStore = defineStore({
         })
     },
 
-    loginUser(data) {
+    loginUser(data, redirectTo = null) {
       this.setUser(data)
+
+      if (this.redirectTo || redirectTo) {
+        router.push(this.redirectTo || redirectTo)
+
+        this.redirectTo = null
+      }
     },
 
     login (data) {
       http.get('/sanctum/csrf-cookie').then(() => {
         http.post('/auth/login', data)
           .then((response) => {
-            this.loginUser(response.data)
-
-            router.push({ name: 'home' })
+            this.loginUser(response.data, { name: 'home' })
           })
           .catch((error) => {
             //
@@ -53,11 +58,9 @@ export const useAuthStore = defineStore({
       http.get('/sanctum/csrf-cookie').then(() => {
         http.post('/auth/register', data)
           .then((response) => {
-            this.loginUser(response.data)
+            this.loginUser(response.data, { name: 'home' })
 
             toast.success('Welcome! Check your email and verify your account')
-
-            router.push({ name: 'home' })
           })
           .catch((error) => {
             //
@@ -99,6 +102,11 @@ export const useAuthStore = defineStore({
 
     can () {
       if (!this.check) {
+        this.redirectTo = {
+          name: router.currentRoute.value.name,
+          params: router.currentRoute.value.params,
+        }
+
         router.push({ name: 'auth.login' })
       }
 
