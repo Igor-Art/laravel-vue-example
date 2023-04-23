@@ -15,7 +15,7 @@ http.interceptors.response.use(
   (error) => {
     const authStore = useAuthStore()
 
-    if ([401, 403, 419].includes(error.response.status) && authStore.check) {
+    if ([401, 419, 503].includes(error.response.status) && authStore.check) {
       useAuthStore().kill()
 
       return

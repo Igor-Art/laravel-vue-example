@@ -13,15 +13,34 @@ export const useAuthStore = defineStore({
   }),
 
   getters: {
-    check: state => !!state.user
+    check: state => !!state.user,
   },
 
   actions: {
+    refreshUser () {
+      if (!this.check) {
+        return
+      }
+
+      http.get('/api/auth/user')
+        .then((response) => {
+          this.setUser(response.data.data)
+        })
+        .catch((error) => {
+          //
+        })
+    },
+
+    loginUser(data) {
+      this.setUser(data)
+    },
+
     login (data) {
       http.get('/sanctum/csrf-cookie').then(() => {
         http.post('/auth/login', data)
           .then((response) => {
-            this.setUser(response.data)
+            this.loginUser(response.data)
+
             router.push({ name: 'home' })
           })
           .catch((error) => {
@@ -34,8 +53,10 @@ export const useAuthStore = defineStore({
       http.get('/sanctum/csrf-cookie').then(() => {
         http.post('/auth/register', data)
           .then((response) => {
-            this.setUser(response.data)
+            this.loginUser(response.data)
+
             toast.success('Welcome! Check your email and verify your account')
+
             router.push({ name: 'home' })
           })
           .catch((error) => {
@@ -49,6 +70,7 @@ export const useAuthStore = defineStore({
         http.post('/auth/forgot-password', data)
           .then((response) => {
             toast.info(response.data.message)
+
             router.push({ name: 'auth.login' })
           })
           .catch((error) => {
@@ -62,6 +84,7 @@ export const useAuthStore = defineStore({
         http.post('/auth/reset-password', data)
           .then((response) => {
             toast.success(response.data.message)
+
             router.push({ name: 'auth.login' })
           })
           .catch((error) => {

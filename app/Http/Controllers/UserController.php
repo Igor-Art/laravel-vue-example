@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ProfileResource;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,11 @@ class UserController extends Controller
     public function index()
     {
         //
+    }
+
+    public function current(Request $request)
+    {
+        return new UserResource($request->user());
     }
 
     public function show(User $user)

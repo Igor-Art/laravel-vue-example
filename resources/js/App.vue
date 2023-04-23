@@ -1,7 +1,15 @@
 <script setup>
+import { onMounted } from 'vue'
 import { RouterView } from 'vue-router'
+import { useAuthStore } from '@/stores/auth'
 import HeaderNav from '@/components/Layout/HeaderNav.vue'
 import AsyncLoading from '@/components/AsyncLoader/AsyncLoading.vue'
+
+const authStore = useAuthStore()
+
+onMounted(() => {
+  authStore.refreshUser()
+})
 </script>
 
 <template>

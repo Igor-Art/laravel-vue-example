@@ -19,6 +19,10 @@ Route::resource('reviews', ReviewController::class)->except(['create', 'edit']);
 
 Route::resource('genres', GenreController::class)->except(['create', 'edit']);
 
+Route::get('auth/user', [UserController::class, 'current'])
+    ->middleware('auth:sanctum')
+    ->name('auth.user');
+
 Route::resource('users', UserController::class)
     ->except(['create', 'store', 'edit']);
 
