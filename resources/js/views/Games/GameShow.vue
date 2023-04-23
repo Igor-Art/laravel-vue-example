@@ -2,17 +2,21 @@
 import { ref, reactive } from 'vue'
 import { useRoute } from 'vue-router'
 import http from '@/http'
+import { useAuthStore } from '@/stores/auth'
 import { useMeta } from '@/plugins/meta'
 import RatingBar from '@/components/RatingBar.vue'
 import Headline from '@/components/Headline.vue'
 import Card from '@/components/Reviews/ReviewCard.vue'
 
 const route = useRoute()
+const authStore = useAuthStore()
 const game = ref({})
 const reviews = reactive({
   meta: {},
   items: [],
 })
+
+const toggleWishlistLock = ref(false)
 
 const fetchGame = async () => {
   const response = await http.get(`/api/games/${route.params.slug}`)
@@ -28,9 +32,15 @@ const fetchReviews = async () => {
 }
 
 const toggleWishlist = async () => {
-  await http.post(`/api/wishlist/toggle/${game.value.id}`)
+  if (authStore.can()) {
+    toggleWishlistLock.value = true
 
-  game.value.has_wishlist = !game.value.has_wishlist
+    await http.post(`/api/wishlist/toggle/${game.value.id}`)
+
+    toggleWishlistLock.value = false
+
+    game.value.has_wishlist = !game.value.has_wishlist
+  }
 }
 
 await fetchGame()
@@ -76,6 +86,7 @@ fetchReviews()
             <button
               class="button-wishlist py-1 px-4 border border-white border-opacity-40 rounded hover:bg-pink-700 hover:border-pink-500 transition"
               :class="{ 'bg-pink-700 border-pink-500': game.has_wishlist }"
+              :disabled="toggleWishlistLock"
               @click="toggleWishlist()"
             >
               <font-awesome-icon icon="heart" />

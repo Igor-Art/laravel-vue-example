@@ -97,6 +97,14 @@ export const useAuthStore = defineStore({
       http.post('/auth/logout').finally(() => this.kill())
     },
 
+    can () {
+      if (!this.check) {
+        router.push({ name: 'auth.login' })
+      }
+
+      return this.check
+    },
+
     setUser (user) {
       this.user = user
 
