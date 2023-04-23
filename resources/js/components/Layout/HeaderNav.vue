@@ -50,9 +50,9 @@ const settings = useSettingsStore()
         <font-awesome-icon icon="user" class="mr-2 text-xs" />
         <span>{{ auth.user.name }}</span>
       </span>
-      <button v-if="auth.check" @click="auth.logout()" class="item">
+      <span v-if="auth.check" @click="auth.logout()" class="item">
         <font-awesome-icon icon="right-from-bracket" aria-label="Logout" />
-      </button>
+      </span>
     </div>
   </nav>
 </template>
@@ -60,7 +60,7 @@ const settings = useSettingsStore()
 <style scoped lang="scss">
 @layer component {
   .item {
-    @apply block relative py-3;
+    @apply block relative py-3 cursor-pointer;
 
     &:not(:last-child) {
       @apply mr-6;
