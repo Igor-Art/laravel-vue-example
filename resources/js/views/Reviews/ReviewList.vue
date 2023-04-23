@@ -31,7 +31,9 @@ useMeta().setTitle('Reviews')
 await fetchReviews()
 
 watch(() => route.query.page, () => {
-  fetchReviews()
+  if (route.name === 'reviews.index') {
+    fetchReviews()
+  }
 })
 </script>
 
