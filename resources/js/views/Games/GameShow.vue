@@ -45,7 +45,7 @@ const toggleWishlist = async () => {
 
     toggleWishlistLock.value = false
 
-    game.value.has_wishlist = !game.value.has_wishlist
+    game.value.has_user_wishlist = !game.value.has_user_wishlist
   }
 }
 
@@ -58,6 +58,7 @@ const toggleReviewForm = () => {
 const onReviewCreated = () => {
   fetchReviews()
   showReviewForm.value = false
+  game.value.has_user_review = true
 }
 
 useMeta().setTitle(game.value.title)
@@ -102,12 +103,12 @@ fetchReviews()
           <div>
             <button
               class="button-wishlist py-1 px-4 border border-white border-opacity-40 rounded hover:bg-pink-700 hover:border-pink-500 transition"
-              :class="{ 'bg-pink-700 border-pink-500': game.has_wishlist }"
+              :class="{ 'bg-pink-700 border-pink-500': game.has_user_wishlist }"
               :disabled="toggleWishlistLock"
               @click="toggleWishlist()"
             >
               <font-awesome-icon icon="heart" />
-              <span v-if="!game.has_wishlist" class="ml-2">Add to wishlist</span>
+              <span v-if="!game.has_user_wishlist" class="ml-2">Add to wishlist</span>
               <span v-else class="ml-2 hidden" data-label="remove">Remove from wishlist</span>
             </button>
           </div>
@@ -124,6 +125,7 @@ fetchReviews()
           </div>
         </Headline>
         <button
+          v-if="!game.has_user_review"
           class="button primary"
           :class="{ 'active': showReviewForm }"
           @click="toggleReviewForm()"
@@ -132,9 +134,13 @@ fetchReviews()
           <span v-show="!showReviewForm">Write a review</span>
           <span v-show="showReviewForm">Close review form</span>
         </button>
+        <RouterLink to="/" v-else class="text-secondary underline">
+          See your review
+        </RouterLink>
       </div>
       <div v-show="showReviewForm" class="mt-6 mb-10">
         <ReviewCreateForm
+          v-if="!game.has_user_review"
           :game="game"
           @review-created="onReviewCreated"
         />

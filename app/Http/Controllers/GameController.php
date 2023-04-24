@@ -55,7 +55,10 @@ class GameController extends Controller
         $game->load(['genres']);
 
         if ($request->user()) {
-            $game->loadExists(['userWishlist' => fn ($query) => $query->where('user_id', $request->user()->id)]);
+            $game->loadExists([
+                'userWishlist' => static fn ($query) => $query->where('user_id', $request->user()->id),
+                'userReview' => static fn ($query) => $query->where('user_id', $request->user()->id),
+            ]);
         }
 
         return new GameResource($game);

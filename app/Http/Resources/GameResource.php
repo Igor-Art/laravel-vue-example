@@ -20,7 +20,8 @@ class GameResource extends JsonResource
             'price' => $this->price,
             'description' => $this->description,
             'genres' => GenreResource::collection($this->whenLoaded('genres')),
-            'has_wishlist' => (bool) $this->user_wishlist_exists,
+            'has_user_wishlist' => (bool) $this->user_wishlist_exists,
+            'has_user_review'=> $this->user_review_exists,
             'reviews_count' => $this->reviews_count,
         ];
     }
