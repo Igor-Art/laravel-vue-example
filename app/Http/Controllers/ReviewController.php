@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\Reviews\CreateReviewAction;
+use App\Actions\Reviews\CreateReviewCommand;
 use App\Filters\Review\GameFilter;
 use App\Filters\Review\UserFilter;
 use App\Http\Requests\Reviews\ReviewStoreRequest;
@@ -12,6 +14,13 @@ use Illuminate\Http\Request;
 
 class ReviewController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum')->only([
+            'store', 'update', 'destroy',
+        ]);
+    }
+
     public function index(ReviewFilterRequest $request)
     {
         $filterRequest = $request->getDto();
@@ -39,25 +48,20 @@ class ReviewController extends Controller
         return ReviewResource::collection($reviews);
     }
 
-    public function store(ReviewStoreRequest $request)
+    public function show(Review $review)
     {
-        $data = $request->getDto();
+        //
+    }
 
-        Review::query()->create([
-            'user_id' => $request->user()->id,
-            'game_id' => $data->game_id,
-            'rating' => $data->rating,
-            'content' => $data->content,
-        ]);
+    public function store(ReviewStoreRequest $request, CreateReviewAction $createReviewAction)
+    {
+        $createReviewAction->handle(
+            new CreateReviewCommand($request->user(), $request->getDto())
+        );
 
         return response()->json([
             'message' => __('Review created successfully.'),
         ]);
-    }
-
-    public function show(Review $review)
-    {
-        //
     }
 
     public function update(Request $request, Review $review)
