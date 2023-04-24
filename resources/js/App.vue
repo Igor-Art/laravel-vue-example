@@ -20,7 +20,7 @@ onMounted(() => {
     <RouterView v-slot="{ Component, route }">
       <template v-if="Component">
         <Transition name="fade" mode="out-in">
-          <KeepAlive exclude="GameList">
+          <KeepAlive :include="[]">
             <Suspense>
               <Component :is="Component" :key="route.path" />
               <template #fallback>
