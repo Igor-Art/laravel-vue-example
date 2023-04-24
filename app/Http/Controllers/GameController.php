@@ -18,6 +18,7 @@ class GameController extends Controller
         $gameFilter = $request->getDto();
 
         $games = Game::query()
+            ->withCount(['reviews'])
             ->filter($gameFilter, [
                 GenreFilter::class,
                 SearchFilter::class,
@@ -32,6 +33,7 @@ class GameController extends Controller
     public function top()
     {
         $games = Game::query()
+            ->withCount(['reviews'])
             ->orderByDesc('rating')
             ->limit(8)
             ->get();

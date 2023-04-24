@@ -21,6 +21,7 @@ class GameResource extends JsonResource
             'description' => $this->description,
             'genres' => GenreResource::collection($this->whenLoaded('genres')),
             'has_wishlist' => (bool) $this->user_wishlist_exists,
+            'reviews_count' => $this->reviews_count,
         ];
     }
 }

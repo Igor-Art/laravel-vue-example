@@ -25,10 +25,14 @@ const getDefaultCover = () => {}
         {{ game.title }}
       </span>
     </RouterLink>
-    <div class="absolute top-0 left-0 right-0 flex flex-nowrap justify-between rounded-t py-1 px-2 bg-black bg-opacity-40 translate-z-none">
+    <div class="absolute top-0 left-0 right-0 flex flex-nowrap items-center justify-between rounded-t py-1 px-2 bg-black bg-opacity-40 translate-z-none">
       <div class="flex font-bold text-xs">
         <font-awesome-icon icon="star" class="mr-1" />
         <span>{{ game.rating || '--' }}</span>
+      </div>
+      <div class="flex">
+        <font-awesome-icon icon="comments" class="mr-1" />
+        <span>{{ game.reviews_count || 0 }}</span>
       </div>
     </div>
   </div>
