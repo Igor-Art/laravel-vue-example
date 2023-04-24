@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Filters\Review\GameFilter;
 use App\Filters\Review\UserFilter;
+use App\Http\Requests\Reviews\ReviewStoreRequest;
 use App\Http\Requests\Reviews\ReviewFilterRequest;
 use App\Http\Resources\ReviewResource;
 use App\Models\Review;
@@ -38,22 +39,23 @@ class ReviewController extends Controller
         return ReviewResource::collection($reviews);
     }
 
-    public function create()
+    public function store(ReviewStoreRequest $request)
     {
-        //
-    }
+        $data = $request->getDto();
 
-    public function store(Request $request)
-    {
-        //
+        Review::query()->create([
+            'user_id' => $request->user()->id,
+            'game_id' => $data->game_id,
+            'rating' => $data->rating,
+            'content' => $data->content,
+        ]);
+
+        return response()->json([
+            'message' => __('Review created successfully.'),
+        ]);
     }
 
     public function show(Review $review)
-    {
-        //
-    }
-
-    public function edit(Review $review)
     {
         //
     }

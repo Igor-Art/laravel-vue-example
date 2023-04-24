@@ -31,6 +31,10 @@ const fetchReviews = async () => {
 
   reviews.meta = response.data.meta
   reviews.items = response.data.data
+
+  if (!reviews.items.length) {
+    showReviewForm.value = true
+  }
 }
 
 const toggleWishlist = async () => {
@@ -49,6 +53,11 @@ const toggleReviewForm = () => {
   if (authStore.can()) {
     showReviewForm.value = !showReviewForm.value
   }
+}
+
+const onReviewCreated = () => {
+  fetchReviews()
+  showReviewForm.value = false
 }
 
 useMeta().setTitle(game.value.title)
@@ -120,11 +129,15 @@ fetchReviews()
           @click="toggleReviewForm()"
         >
           <font-awesome-icon icon="bullhorn" class="mr-2" />
-          <span>Write a review</span>
+          <span v-show="!showReviewForm">Write a review</span>
+          <span v-show="showReviewForm">Close review form</span>
         </button>
       </div>
-      <div v-show="showReviewForm" class="mb-10">
-        <ReviewCreateForm :game="game" />
+      <div v-show="showReviewForm" class="mt-6 mb-10">
+        <ReviewCreateForm
+          :game="game"
+          @review-created="onReviewCreated"
+        />
       </div>
       <div v-if="reviews.items.length">
         <ReviewCard
