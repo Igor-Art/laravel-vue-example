@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from 'vue'
+import RatingConfig from '@/config/rating'
 
 const props = defineProps({
   rating: {
@@ -12,9 +13,7 @@ const props = defineProps({
   }
 })
 
-const max = 5;
-
-const labelOf = computed(() => `Rating ${props.rating}/${max}`)
+const labelOf = computed(() => `Rating ${props.rating}/${RatingConfig.max}`)
 const intRating = computed(() => !props.rating ? 0 : (!isNaN(parseInt(props.rating)) ? parseInt(props.rating) : 0))
 </script>
 

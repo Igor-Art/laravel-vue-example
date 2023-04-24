@@ -21,6 +21,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
+  faStar as faStarEmpty,
+} from '@fortawesome/free-regular-svg-icons'
+
+import {
   faGithub,
 } from '@fortawesome/free-brands-svg-icons'
 
@@ -28,6 +32,7 @@ library.add(
   faUser,
   faRightFromBracket,
   faStar,
+  faStarEmpty,
   faComments,
   faAnglesRight,
   faAnglesDown,
