@@ -97,15 +97,12 @@ export const useAuthStore = defineStore({
     },
 
     logout () {
-      http.post('/auth/logout').finally(() => this.kill())
+      http.post('/auth/logout').finally(() => this.kill(false))
     },
 
     can () {
       if (!this.check) {
-        this.redirectTo = {
-          name: router.currentRoute.value.name,
-          params: router.currentRoute.value.params,
-        }
+        this.setRedirectToCurrent()
 
         router.push({ name: 'auth.login' })
       }
@@ -119,10 +116,21 @@ export const useAuthStore = defineStore({
       localStorage.setItem('user', JSON.stringify(user))
     },
 
-    kill () {
+    kill (preserveRedirect = true) {
       this.setUser(null)
 
+      if (preserveRedirect) {
+        this.setRedirectToCurrent()
+      }
+
       router.push({ name: 'auth.login' })
+    },
+
+    setRedirectToCurrent () {
+      this.redirectTo = {
+        name: router.currentRoute.value.name,
+        params: router.currentRoute.value.params,
+      }
     }
   }
 })
