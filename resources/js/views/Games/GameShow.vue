@@ -43,9 +43,9 @@ const toggleWishlist = async () => {
   }
 }
 
-await fetchGame()
-
 useMeta().setTitle(game.value.title)
+
+await fetchGame()
 
 fetchReviews()
 
