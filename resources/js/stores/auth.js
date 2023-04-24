@@ -126,11 +126,12 @@ export const useAuthStore = defineStore({
       router.push({ name: 'auth.login' })
     },
 
+    setRedirectTo (name, params) {
+      this.redirectTo = { name, params }
+    },
+
     setRedirectToCurrent () {
-      this.redirectTo = {
-        name: router.currentRoute.value.name,
-        params: router.currentRoute.value.params,
-      }
-    }
+      this.setRedirectTo(router.currentRoute.value.name, router.currentRoute.value.params)
+    },
   }
 })

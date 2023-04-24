@@ -24,6 +24,8 @@ router.beforeEach((to, from) => {
   const auth = useAuthStore()
 
   if (to.meta.auth === true && !auth.check) {
+    auth.setRedirectTo(to.name, to.params)
+
     return { name: 'auth.login' }
   }
 
