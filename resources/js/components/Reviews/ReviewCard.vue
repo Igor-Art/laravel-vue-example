@@ -1,5 +1,5 @@
 <script setup>
-import RatingBar from '@/components/RatingBar.vue'
+import RatingBar from '@/components/Rating/RatingBar.vue'
 
 defineProps({
   review: {

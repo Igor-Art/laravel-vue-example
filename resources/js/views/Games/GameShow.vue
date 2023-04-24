@@ -4,7 +4,7 @@ import { useRoute } from 'vue-router'
 import http from '@/http'
 import { useAuthStore } from '@/stores/auth'
 import { useMeta } from '@/plugins/meta'
-import RatingBar from '@/components/RatingBar.vue'
+import RatingBar from '@/components/Rating/RatingBar.vue'
 import Headline from '@/components/Headline.vue'
 import Card from '@/components/Reviews/ReviewCard.vue'
 
