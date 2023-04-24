@@ -6,7 +6,8 @@ import { useAuthStore } from '@/stores/auth'
 import { useMeta } from '@/plugins/meta'
 import RatingBar from '@/components/Rating/RatingBar.vue'
 import Headline from '@/components/Headline.vue'
-import Card from '@/components/Reviews/ReviewCard.vue'
+import ReviewCard from '@/components/Reviews/ReviewCard.vue'
+import ReviewCreateForm from '@/components/Reviews/ReviewCreateForm.vue'
 
 const route = useRoute()
 const authStore = useAuthStore()
@@ -17,6 +18,7 @@ const reviews = reactive({
 })
 
 const toggleWishlistLock = ref(false)
+const showReviewForm = ref(false)
 
 const fetchGame = async () => {
   const response = await http.get(`/api/games/${route.params.slug}`)
@@ -40,6 +42,12 @@ const toggleWishlist = async () => {
     toggleWishlistLock.value = false
 
     game.value.has_wishlist = !game.value.has_wishlist
+  }
+}
+
+const toggleReviewForm = () => {
+  if (authStore.can()) {
+    showReviewForm.value = !showReviewForm.value
   }
 }
 
@@ -99,12 +107,27 @@ fetchReviews()
       </div>
     </div>
     <div class="mt-12 pl-3 max-w-lg">
-      <Headline icon="comments" class="-ml-3 flex items-center">
-        <span class="mr-2">Reviews</span>
-        <span class="text-base text-secondary whitespace-nowrap">( {{ reviews.meta.total || 0 }} )</span>
-      </Headline>
+      <div class="flex justify-between items-center mb-4">
+        <Headline icon="comments" class="-ml-3 !mb-0 flex items-center">
+          <div>
+            <span class="mr-2">Reviews</span>
+            <span class="text-base text-secondary whitespace-nowrap">( {{ reviews.meta.total || 0 }} )</span>
+          </div>
+        </Headline>
+        <button
+          class="button primary"
+          :class="{ 'active': showReviewForm }"
+          @click="toggleReviewForm()"
+        >
+          <font-awesome-icon icon="bullhorn" class="mr-2" />
+          <span>Write a review</span>
+        </button>
+      </div>
+      <div v-show="showReviewForm" class="mb-10">
+        <ReviewCreateForm :game="game" />
+      </div>
       <div v-if="reviews.items.length">
-        <Card
+        <ReviewCard
           v-for="review in reviews.items"
           :key="review.id"
           :review="review"

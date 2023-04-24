@@ -54,6 +54,14 @@ button:disabled {
   @apply px-1 border-b border-white border-opacity-75;
 }
 
+.button.primary {
+  @apply flex items-center px-4 py-1.5 border border-sky-500 rounded transition;
+  @apply hover:bg-sky-700;
+}
+.button.primary.active {
+  @apply bg-sky-800;
+}
+
 .input-row {
   @apply relative mb-3 pb-5;
 }
