@@ -55,12 +55,13 @@ class ReviewController extends Controller
 
     public function store(ReviewStoreRequest $request, CreateReviewAction $createReviewAction)
     {
-        $createReviewAction->handle(
+        $review = $createReviewAction->handle(
             new CreateReviewCommand($request->user(), $request->getDto())
         );
 
         return response()->json([
             'message' => __('Review created successfully.'),
+            'review' => new ReviewResource($review),
         ]);
     }
 

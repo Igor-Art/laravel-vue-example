@@ -33,7 +33,7 @@ async function onSubmit (values, { resetForm }) {
   if (response.status === 200) {
     toast.success(response.data.message)
     resetForm()
-    emit('reviewCreated')
+    emit('reviewCreated', response.data.review)
   }
 }
 </script>

@@ -55,7 +55,7 @@ const toggleReviewForm = () => {
   }
 }
 
-const onReviewCreated = () => {
+const onReviewCreated = (review) => {
   fetchReviews()
   showReviewForm.value = false
   game.value.has_user_review = true
