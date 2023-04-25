@@ -6,7 +6,7 @@ use App\Models\Review;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-final readonly class ReviewCreated
+final readonly class ReviewUpdated
 {
     use Dispatchable, SerializesModels;
 

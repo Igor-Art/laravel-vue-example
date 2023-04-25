@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Actions\Game\CalculateGameRatingAction;
 use App\Models\Game;
 use Illuminate\Console\Command;
 
@@ -29,13 +30,13 @@ class GameRatingCalc extends Command
     /**
      * Execute the console command.
      */
-    public function handle(): void
+    public function handle(CalculateGameRatingAction $calculate): void
     {
         Game::query()
             ->withWhereHas('reviews')
-            ->chunk(10, function ($games) {
-                $games->each(function ($game) {
-                    $game->update(['rating' => $game->reviews->avg('rating')]);
+            ->chunk(10, function ($games) use ($calculate) {
+                $games->each(function ($game) use ($calculate) {
+                    $game->update(['rating' => $calculate->handle($game)]);
 
                     ++$this->affected;
                 });
