@@ -3,7 +3,7 @@ import { reactive, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import http from '@/http'
 import { useGameFilterStore } from '@/stores/game-filter'
-import GameCard from '@/components/Games/GameCard.vue'
+import GameCard from '@/components/Game/GameCard.vue'
 import AsyncLoading from '@/components/AsyncLoader/AsyncLoading.vue'
 
 const route = useRoute()

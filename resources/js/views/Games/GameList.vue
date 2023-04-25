@@ -1,12 +1,12 @@
 <script setup>
 import { defineAsyncComponent, onErrorCaptured, ref } from 'vue'
 import { useMeta } from '@/plugins/meta'
-import GameFilter from '@/components/Games/GameFilter.vue'
+import GameFilter from '@/components/Game/GameFilter.vue'
 import ErrorLoading from '@/components/AsyncLoader/ErrorAsyncLoading.vue'
 import AsyncLoading from '@/components/AsyncLoader/AsyncLoading.vue'
 import Headline from '@/components/Headline.vue'
 
-const GameFilterResults = defineAsyncComponent(() => import('@/components/Games/GameFilterResults.vue'))
+const GameFilterResults = defineAsyncComponent(() => import('@/components/Game/GameFilterResults.vue'))
 
 const error = ref('')
 

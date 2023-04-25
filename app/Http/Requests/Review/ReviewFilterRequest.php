@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Reviews;
+namespace App\Http\Requests\Review;
 
-use App\Dto\Reviews\ReviewFilterDto;
+use App\Dto\Review\ReviewFilterDto;
 use App\Http\Requests\FormRequest;
 
 final class ReviewFilterRequest extends FormRequest

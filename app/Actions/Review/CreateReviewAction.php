@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Actions\Reviews;
+namespace App\Actions\Review;
 
-use App\Events\Reviews\ReviewCreated;
+use App\Events\Review\ReviewCreated;
 use App\Exceptions\Reviews\ReviewIsNotUniqueException;
 use App\Models\Review;
 use Illuminate\Contracts\Bus\Dispatcher;

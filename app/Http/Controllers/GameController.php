@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Filters\Game\GenreFilter;
 use App\Filters\Game\PriceFilter;
 use App\Filters\Game\SearchFilter;
-use App\Http\Requests\Games\GameFilterRequest;
+use App\Http\Requests\Game\GameFilterRequest;
 use App\Http\Resources\GameResource;
 use App\Http\Resources\ReviewResource;
 use App\Models\Game;

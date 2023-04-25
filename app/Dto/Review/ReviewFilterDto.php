@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Dto\Reviews;
+namespace App\Dto\Review;
 
 use App\Dto\BaseDto;
 use App\Filters\FilterRequest;

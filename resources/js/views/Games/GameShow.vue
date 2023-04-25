@@ -6,8 +6,8 @@ import { useAuthStore } from '@/stores/auth'
 import { useMeta } from '@/plugins/meta'
 import RatingBar from '@/components/Rating/RatingBar.vue'
 import Headline from '@/components/Headline.vue'
-import ReviewCard from '@/components/Reviews/ReviewCard.vue'
-import ReviewCreateForm from '@/components/Reviews/ReviewCreateForm.vue'
+import ReviewCard from '@/components/Review/ReviewCard.vue'
+import ReviewCreateForm from '@/components/Review/ReviewCreateForm.vue'
 
 const route = useRoute()
 const authStore = useAuthStore()

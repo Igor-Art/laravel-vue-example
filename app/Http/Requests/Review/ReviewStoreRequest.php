@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Reviews;
+namespace App\Http\Requests\Review;
 
-use App\Dto\Reviews\ReviewStoreDto;
+use App\Dto\Review\ReviewStoreDto;
 use App\Http\Requests\FormRequest;
 
 class ReviewStoreRequest extends FormRequest

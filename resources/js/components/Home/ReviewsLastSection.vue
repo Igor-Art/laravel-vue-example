@@ -4,7 +4,7 @@ import AsyncLoading from '@/components/AsyncLoader/AsyncLoading.vue'
 import ErrorLoading from '@/components/AsyncLoader/ErrorAsyncLoading.vue'
 import Headline from '@/components/Headline.vue'
 
-const ReviewsLastList = defineAsyncComponent(() => import('@/components/Reviews/ReviewLastList.vue'))
+const ReviewsLastList = defineAsyncComponent(() => import('@/components/Review/ReviewLastList.vue'))
 
 const error = ref('')
 

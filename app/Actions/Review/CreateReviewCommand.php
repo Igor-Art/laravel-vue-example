@@ -2,7 +2,7 @@
 
 namespace App\Actions\Reviews;
 
-use App\Dto\Reviews\ReviewStoreDto;
+use App\Dto\Review\ReviewStoreDto;
 use App\Models\User;
 
 final readonly class CreateReviewCommand

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Games;
+namespace App\Http\Requests\Game;
 
-use App\Dto\Games\GameFilterDto;
+use App\Dto\Game\GameFilterDto;
 use App\Http\Requests\FormRequest;
 
 final class GameFilterRequest extends FormRequest

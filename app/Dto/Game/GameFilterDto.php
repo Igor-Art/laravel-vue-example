@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Dto\Games;
+namespace App\Dto\Game;
 
 use App\Dto\BaseDto;
 use App\Filters\FilterRequest;

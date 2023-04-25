@@ -2,7 +2,7 @@
 
 namespace App\Filters\Review;
 
-use App\Dto\Reviews\ReviewFilterDto;
+use App\Dto\Review\ReviewFilterDto;
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
 

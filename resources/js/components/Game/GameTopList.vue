@@ -1,7 +1,7 @@
 <script setup>
 import { reactive } from 'vue'
 import http from '@/http'
-import GameCard from '@/components/Games/GameCard.vue'
+import GameCard from '@/components/Game/GameCard.vue'
 
 const games = reactive({
   items: [],

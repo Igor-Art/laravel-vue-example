@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\Reviews\CreateReviewAction;
-use App\Actions\Reviews\CreateReviewCommand;
+use App\Actions\Review\CreateReviewAction;
+use App\Actions\Review\CreateReviewCommand;
 use App\Filters\Review\GameFilter;
 use App\Filters\Review\UserFilter;
-use App\Http\Requests\Reviews\ReviewStoreRequest;
-use App\Http\Requests\Reviews\ReviewFilterRequest;
+use App\Http\Requests\Review\ReviewStoreRequest;
+use App\Http\Requests\Review\ReviewFilterRequest;
 use App\Http\Resources\ReviewResource;
 use App\Models\Review;
 use Illuminate\Http\Request;
