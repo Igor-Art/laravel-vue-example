@@ -3,9 +3,9 @@
 namespace App\Actions\Review;
 
 use App\Events\Review\ReviewCreated;
-use App\Exceptions\Reviews\ReviewIsNotUniqueException;
+use App\Exceptions\Review\ReviewIsNotUniqueException;
 use App\Models\Review;
-use Illuminate\Contracts\Bus\Dispatcher;
+use Illuminate\Contracts\Events\Dispatcher;
 
 final readonly class CreateReviewAction
 {

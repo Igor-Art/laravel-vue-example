@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Reviews;
+namespace App\Actions\Review;
 
 use App\Dto\Review\ReviewStoreDto;
 use App\Models\User;
