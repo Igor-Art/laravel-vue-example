@@ -9,7 +9,9 @@ use App\Filters\Review\UserFilter;
 use App\Http\Requests\Review\ReviewStoreRequest;
 use App\Http\Requests\Review\ReviewFilterRequest;
 use App\Http\Resources\ReviewResource;
+use App\Http\Responses\Review\ReviewCreatedResponse;
 use App\Models\Review;
+use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Http\Request;
 
 class ReviewController extends Controller
@@ -53,16 +55,13 @@ class ReviewController extends Controller
         //
     }
 
-    public function store(ReviewStoreRequest $request, CreateReviewAction $createReviewAction)
+    public function store(ReviewStoreRequest $request, CreateReviewAction $createReviewAction): Responsable
     {
         $review = $createReviewAction->handle(
             new CreateReviewCommand($request->user(), $request->getDto())
         );
 
-        return response()->json([
-            'message' => __('Review created successfully.'),
-            'review' => new ReviewResource($review),
-        ]);
+        return new ReviewCreatedResponse($review);
     }
 
     public function update(Request $request, Review $review)
