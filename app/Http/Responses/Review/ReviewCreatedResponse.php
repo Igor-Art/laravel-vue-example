@@ -12,5 +12,6 @@ class ReviewCreatedResponse extends ApiResponse
     {
         $this->setMessage(__('Review created successfully.'));
         $this->setPayload(new ReviewResource($review));
+        $this->setStatus(201);
     }
 }

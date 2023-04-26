@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 abstract class ApiResponse implements Responsable
 {
     private ?string $message = null;
-    private array|object|null $payload = null;
+    private mixed $payload = null;
     private int $status = 200;
 
     public function toResponse($request): JsonResponse
@@ -23,7 +23,7 @@ abstract class ApiResponse implements Responsable
         return $this;
     }
 
-    public function setPayload($payload): self
+    public function setPayload(mixed $payload): self
     {
         $this->payload = $payload;
 
