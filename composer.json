@@ -13,6 +13,7 @@
         "laravel/octane": "^1.5",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
+        "mews/purifier": "^3.4",
         "spiral/roadrunner": "^2.8.2"
     },
     "require-dev": {
