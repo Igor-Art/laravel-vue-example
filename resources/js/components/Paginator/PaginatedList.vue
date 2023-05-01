@@ -39,6 +39,11 @@ const props = defineProps({
     required: false,
     default: '',
   },
+  classItem: {
+    type: String,
+    required: false,
+    default: '',
+  },
   scopeRoute: {
     type: String,
     required: false,
@@ -78,6 +83,7 @@ if (!isCursor) {
       v-for="item in items"
       v-bind="itemProps(item)"
       :key="item[itemKey]"
+      :class="classItem"
       :is="component"
     />
   </div>

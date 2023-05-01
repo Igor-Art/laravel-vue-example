@@ -1,12 +1,12 @@
 <script setup>
-import { reactive, watch } from 'vue'
+import { reactive } from 'vue'
 import { useRoute } from 'vue-router'
 import http from '@/http'
 import { useMeta } from '@/plugins/meta'
 import ReviewCard from '@/components/Review/ReviewCard.vue'
 import Headline from '@/components/Headline.vue'
-import Pagination from '@/components/Paginator/NumberPagination.vue'
 import EmptyList from '@/components/EmptyList.vue'
+import PaginatedList from '@/components/Paginator/PaginatedList.vue'
 
 const route = useRoute()
 
@@ -15,12 +15,8 @@ const reviews = reactive({
   items: [],
 })
 
-const fetchReviews = async () => {
-  const response = await http.get('/api/reviews', {
-    params: {
-      page: route.query.page || 1,
-    }
-  })
+const fetchReviews = async (params = {}) => {
+  const response = await http.get('/api/reviews', { params })
 
   reviews.meta = response.data.meta
   reviews.items = response.data.data
@@ -28,12 +24,8 @@ const fetchReviews = async () => {
 
 useMeta().setTitle('Reviews')
 
-await fetchReviews()
-
-watch(() => route.query.page, () => {
-  if (route.name === 'reviews.index') {
-    fetchReviews()
-  }
+await fetchReviews({
+  page: route.query.page || 1
 })
 </script>
 
@@ -44,18 +36,16 @@ watch(() => route.query.page, () => {
       Total: {{ reviews.meta.total }}
     </div>
     <div v-if="reviews.items.length">
-      <div class="max-w-lg">
-        <ReviewCard
-          v-for="review in reviews.items"
-          :key="review.id"
-          :review="review"
-          class="mb-6"
-        />
-      </div>
-      <Pagination
-        :total="reviews.meta.total"
-        :per="reviews.meta.per_page"
-        class="mt-10"
+      <PaginatedList
+        :component="ReviewCard"
+        :items="reviews.items"
+        :meta="reviews.meta"
+        item-prop-name="review"
+        scope-route="reviews.index"
+        class="max-w-lg"
+        class-pagination="mt-10"
+        class-item="mb-6"
+        @changed="params => fetchReviews(params)"
       />
     </div>
     <EmptyList v-else>
