@@ -46,10 +46,10 @@ const settings = useSettingsStore()
       >
         Register
       </RouterLink>
-      <span v-if="auth.check" class="item">
+      <RouterLink v-if="auth.check" :to="{ name: 'profile.show', params: { id: auth.user.id } }" class="item">
         <font-awesome-icon icon="user" class="mr-2 text-xs" />
         <span>{{ auth.user.name }}</span>
-      </span>
+      </RouterLink>
       <span v-if="auth.check" @click="auth.logout()" class="item">
         <font-awesome-icon icon="right-from-bracket" aria-label="Logout" />
       </span>

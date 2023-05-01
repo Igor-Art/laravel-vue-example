@@ -36,7 +36,37 @@ useMeta().setTitle(user.value.name)
         <div>Registered {{ $date.formatDate(user.registered_at) }} ({{ $date.ago(user.registered_at) }})</div>
       </div>
     </div>
-    <div>Reviews: {{ user.reviews_count || 0 }}</div>
-    <div>Wishlist: {{ user.wishlist_count || 0 }}</div>
+    <div class="flex items-start mb-10">
+      <div class="profile-sidebar">
+        <RouterLink :to="{ name: 'profile.show.reviews' }">Reviews ({{ user.reviews_count || 0 }})</RouterLink>
+        <RouterLink :to="{ name: 'profile.show.wishlist' }">Wishlist ({{ user.wishlist_count || 0 }})</RouterLink>
+      </div>
+      <div class="pt-4 flex-grow">
+        <RouterView />
+      </div>
+    </div>
   </div>
 </template>
+
+<style scoped lang="scss">
+.profile-sidebar {
+  @apply flex flex-col mr-10 w-32 border-white border-opacity-20;
+  > a {
+    @apply block py-2 px-4 text-sm transition;
+    @apply border border-transparent border-r-white border-opacity-20;
+
+    &:not(:first-child) {
+      position: relative;
+      margin-top: -1px;
+    }
+
+    &:hover,
+    &.router-link-exact-active {
+      @apply border-white border-opacity-20;
+    }
+    &.router-link-exact-active {
+      @apply border-r-0;
+    }
+  }
+}
+</style>

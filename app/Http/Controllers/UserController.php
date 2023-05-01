@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\GameResource;
 use App\Http\Resources\ProfileResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
@@ -24,6 +25,13 @@ class UserController extends Controller
         $user->loadCount(['reviews', 'wishlist']);
 
         return new ProfileResource($user);
+    }
+
+    public function wishlist(User $user)
+    {
+        $games = $user->wishlist()->cursorPaginate(8);
+
+        return GameResource::collection($games);
     }
 
     public function update(Request $request, User $user)

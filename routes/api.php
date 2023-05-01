@@ -28,6 +28,8 @@ Route::get('auth/user', [UserController::class, 'current'])
     ->middleware('auth:sanctum')
     ->name('auth.user');
 
+Route::get('users/{user}/wishlist', [UserController::class, 'wishlist'])->name('users.show.wishlist');
+
 Route::resource('users', UserController::class)
     ->except(['create', 'store', 'edit']);
 
