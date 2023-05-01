@@ -21,7 +21,7 @@ onMounted(() => {
       <template v-if="Component">
         <Transition name="fade" mode="out-in">
           <KeepAlive :include="[]">
-            <Suspense>
+            <Suspense :timeout="0">
               <Component :is="Component" :key="route.path" />
               <template #fallback>
                 <AsyncLoading />
