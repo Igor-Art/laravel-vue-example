@@ -1,8 +1,8 @@
 <script setup>
 import { watch } from 'vue'
 import { useRoute } from 'vue-router'
-import NumberPagination from '@/components/Paginator/NumberPagination.vue'
-import LoadMorePagination from '@/components/Paginator/LoadMorePagination.vue'
+import NumberPagination from '@/components/Pagination/NumberPagination.vue'
+import LoadMorePagination from '@/components/Pagination/LoadMorePagination.vue'
 
 const emit = defineEmits(['changed'])
 const route = useRoute()

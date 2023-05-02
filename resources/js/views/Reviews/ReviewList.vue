@@ -5,8 +5,8 @@ import http from '@/http'
 import { useMeta } from '@/plugins/meta'
 import ReviewCard from '@/components/Review/ReviewCard.vue'
 import Headline from '@/components/Headline.vue'
-import EmptyList from '@/components/EmptyList.vue'
-import PaginatedList from '@/components/Paginator/PaginatedList.vue'
+import EmptyList from '@/components/Lists/EmptyList.vue'
+import PaginatedList from '@/components/Lists/PaginatedList.vue'
 
 const route = useRoute()
 

@@ -3,7 +3,7 @@ import { useRoute } from 'vue-router'
 import http from '@/http'
 import { reactive } from 'vue'
 import GameCard from '@/components/Game/GameCard.vue'
-import PaginatedList from '@/components/Paginator/PaginatedList.vue'
+import PaginatedList from '@/components/Lists/PaginatedList.vue'
 
 const route = useRoute()
 
