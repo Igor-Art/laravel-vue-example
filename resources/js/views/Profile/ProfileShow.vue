@@ -38,8 +38,20 @@ useMeta().setTitle(user.value.name)
     </div>
     <div class="flex items-start mb-10">
       <div class="profile-sidebar">
-        <RouterLink :to="{ name: 'profile.show.reviews' }">Reviews ({{ user.reviews_count || 0 }})</RouterLink>
-        <RouterLink :to="{ name: 'profile.show.wishlist' }">Wishlist ({{ user.wishlist_count || 0 }})</RouterLink>
+        <RouterLink
+          :to="{ name: 'profile.show.reviews' }"
+          class="item"
+          :class="{ disabled: !user.reviews_count }"
+        >
+          Reviews ({{ user.reviews_count || 0 }})
+        </RouterLink>
+        <RouterLink
+          :to="{ name: 'profile.show.wishlist' }"
+          class="item"
+          :class="{ disabled: !user.wishlist_count }"
+        >
+          Wishlist ({{ user.wishlist_count || 0 }})
+        </RouterLink>
       </div>
       <div class="pt-4 flex-grow">
         <RouterView />
@@ -51,7 +63,7 @@ useMeta().setTitle(user.value.name)
 <style scoped lang="scss">
 .profile-sidebar {
   @apply flex flex-col mr-10 w-32 border-white border-opacity-20;
-  > a {
+  > .item {
     @apply block py-2 px-4 text-sm transition;
     @apply border border-transparent border-r-white border-opacity-20;
 
@@ -66,6 +78,10 @@ useMeta().setTitle(user.value.name)
     }
     &.router-link-exact-active {
       @apply border-r-0;
+    }
+
+    &.disabled {
+      @apply pointer-events-none text-primary text-opacity-30;
     }
   }
 }

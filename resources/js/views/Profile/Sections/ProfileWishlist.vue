@@ -27,6 +27,7 @@ await fetchGames()
 <template>
   <div>
     <PaginatedList
+      v-if="games.items.length"
       :component="GameCard"
       :items="games.items"
       :meta="games.meta"
@@ -36,5 +37,8 @@ await fetchGames()
       class-pagination="flex justify-center"
       @changed="params => fetchGames(params)"
     />
+    <div v-else>
+      Wishlist is empty
+    </div>
   </div>
 </template>

@@ -27,6 +27,7 @@ await fetchReviews()
 <template>
   <div>
     <PaginatedList
+      v-if="reviews.items.length"
       :component="ReviewCard"
       :items="reviews.items"
       :meta="reviews.meta"
@@ -37,5 +38,8 @@ await fetchReviews()
       class-item="mb-6"
       @changed="params => fetchReviews(params)"
     />
+    <div v-else>
+      Reviews is empty
+    </div>
   </div>
 </template>
