@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\GameResource;
 use App\Http\Resources\ProfileResource;
+use App\Http\Resources\ReviewResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -32,6 +33,16 @@ class UserController extends Controller
         $games = $user->wishlist()->cursorPaginate(8);
 
         return GameResource::collection($games);
+    }
+
+    public function reviews(User $user)
+    {
+        $reviews = $user->reviews()
+            ->with(['game'])
+            ->orderByDesc('created_at')
+            ->cursorPaginate(5);
+
+        return ReviewResource::collection($reviews);
     }
 
     public function update(Request $request, User $user)

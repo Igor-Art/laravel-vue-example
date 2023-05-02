@@ -29,6 +29,7 @@ Route::get('auth/user', [UserController::class, 'current'])
     ->name('auth.user');
 
 Route::get('users/{user}/wishlist', [UserController::class, 'wishlist'])->name('users.show.wishlist');
+Route::get('users/{user}/reviews', [UserController::class, 'reviews'])->name('users.show.reviews');
 
 Route::resource('users', UserController::class)
     ->except(['create', 'store', 'edit']);

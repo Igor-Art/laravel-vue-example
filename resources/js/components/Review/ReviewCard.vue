@@ -12,7 +12,7 @@ defineProps({
 <template>
   <div>
     <div class="flex items-center mb-1">
-      <div class="mr-4">
+      <div v-if="review.user" class="mr-4">
         <font-awesome-icon icon="user" class="w-2.5 mr-2" />
         <RouterLink :to="{ name: 'profile.show', params: { id: review.user.id } }">
           {{ review.user.name }}
