@@ -15,6 +15,7 @@ export const useAuthStore = defineStore({
 
   getters: {
     check: state => !!state.user,
+    id: state => state.user?.id
   },
 
   actions: {

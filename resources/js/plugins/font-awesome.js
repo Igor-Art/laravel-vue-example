@@ -18,6 +18,7 @@ import {
   faFileExcel,
   faHeart,
   faBullhorn,
+  faPencil,
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
@@ -43,6 +44,7 @@ library.add(
   faFileExcel,
   faHeart,
   faBullhorn,
+  faPencil,
 )
 
 export default FontAwesomeIcon

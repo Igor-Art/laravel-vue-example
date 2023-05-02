@@ -1,5 +1,8 @@
 <script setup>
 import RatingBar from '@/components/Rating/RatingBar.vue'
+import { useAuthStore } from '@/stores/auth'
+
+const auth = useAuthStore()
 
 defineProps({
   review: {
@@ -25,6 +28,15 @@ defineProps({
       <div>
         {{ $date.ago(review.published_at) }}
       </div>
+      <RouterLink
+        v-if="review.user_id === auth.id"
+        to="/"
+        class="ml-5"
+        title="Edit review"
+        aria-label="Edit review"
+      >
+        <font-awesome-icon icon="pencil" class="w-2.5" />
+      </RouterLink>
     </div>
     <div v-html="review.content" class="font-light"></div>
   </div>
