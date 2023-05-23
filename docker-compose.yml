@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+
+    database:
+        image: yobasystems/alpine-mariadb
+        container_name: lve_db
+        restart: "no"
+        ports:
+            - '3377:3306'
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+        volumes:
+            - ./docker/data/mysql:/var/lib/mysql
+
+    api:
+        build:
+            context: ./docker/bin/api
+        container_name: lve_api
+        restart: "no"
+        links:
+            - database
+        depends_on:
+            - database
+        ports:
+            - "8000:8000"
+        environment:
+            - NODE_PATH=/usr/local/lib/node_modules
+        volumes:
+            - ./docker/config/php/php.ini:/usr/local/etc/php/php.ini
+            - ./:/app
+
+    web:
+        build:
+            context: ./docker/bin/web
+        container_name: lve_web
+        restart: "no"
+        depends_on:
+            - api
+        ports:
+            - "5173:5173"
+        volumes:
+            - ./:/app
+
+    mailhog:
+        image: mailhog/mailhog
+        container_name: lve_mailhog
+        restart: "no"
+        ports:
+            - '${MAILHOG_UI_PORT}:8025'
+
+    redis:
+        image: redis:alpine
+        container_name: lve_redis
+        command: redis-server --appendonly yes --requirepass "${REDIS_PASSWORD}"
+        volumes:
+            - ./docker/data/redis:/data

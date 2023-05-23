@@ -17,3 +17,7 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+rr
+.rr.yaml
+docker/data/mysql/*
+docker/data/redis/*
