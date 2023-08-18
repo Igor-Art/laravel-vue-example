@@ -36,6 +36,21 @@ Go to http://localhost:8000
 Mailhog: http://localhost:8025  
 Database: `localhost:3377`
 
+### Native build
+```
+composer install
+php artisan key:generate
+php artisan storage:link
+php artisan migrate
+php artisan db:seed --class=DemoSeeder
+php artisan octane:install --server=roadrunner
+php artisan octane:start --watch
+```
+#### Build frontend
+```
+yarn && yarn dev
+```
+
 
 ### Preview
 ![home page](./preview.jpg?raw=true)
