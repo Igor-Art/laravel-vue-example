@@ -19,6 +19,8 @@ import {
   faHeart,
   faBullhorn,
   faPencil,
+  faGear,
+  faLock,
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
@@ -45,6 +47,8 @@ library.add(
   faHeart,
   faBullhorn,
   faPencil,
+  faGear,
+  faLock,
 )
 
 export default FontAwesomeIcon

@@ -4,6 +4,7 @@ import { RouterView } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
 import HeaderNav from '@/components/Layout/HeaderNav.vue'
 import AsyncLoading from '@/components/AsyncLoader/AsyncLoading.vue'
+import Overlay from '@/components/Modals/Overlay.vue'
 
 const authStore = useAuthStore()
 
@@ -32,6 +33,7 @@ onMounted(() => {
       </template>
     </RouterView>
   </main>
+  <Overlay />
 </template>
 
 <style>

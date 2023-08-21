@@ -6,9 +6,3 @@
     <slot />
   </div>
 </template>
-
-<style scoped>
-.bg-card {
-  background: transparent linear-gradient(to right bottom, rgba(255,255,255, 0) 60%, rgba(255,255,255, .08));
-}
-</style>

@@ -15,7 +15,8 @@ export const useAuthStore = defineStore({
 
   getters: {
     check: state => !!state.user,
-    id: state => state.user?.id
+    id: state => state.user?.id,
+    isTwoFactor: state => state.user?.two_factor_enabled,
   },
 
   actions: {
@@ -46,6 +47,22 @@ export const useAuthStore = defineStore({
     login (data) {
       http.get('/sanctum/csrf-cookie').then(() => {
         http.post('/auth/login', data)
+          .then((response) => {
+            if (response.data.two_factor) {
+              router.push('/two-factor')
+            } else {
+              this.loginUser(response.data, { name: 'home' })
+            }
+          })
+          .catch((error) => {
+            //
+          })
+      })
+    },
+
+    loginTwoFactor (data) {
+      http.get('/sanctum/csrf-cookie').then(() => {
+        http.post('/auth/two-factor-challenge', data)
           .then((response) => {
             this.loginUser(response.data, { name: 'home' })
           })
