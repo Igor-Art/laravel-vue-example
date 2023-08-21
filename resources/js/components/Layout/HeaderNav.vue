@@ -50,6 +50,9 @@ const settings = useSettingsStore()
         <font-awesome-icon icon="user" class="mr-2 text-xs" />
         <span>{{ auth.user.name }}</span>
       </RouterLink>
+      <RouterLink v-if="auth.check" :to="{ name: 'profile.settings' }" class="item">
+        <font-awesome-icon icon="gear" aria-label="Settings" />
+      </RouterLink>
       <span v-if="auth.check" @click="auth.logout()" class="item">
         <font-awesome-icon icon="right-from-bracket" aria-label="Logout" />
       </span>

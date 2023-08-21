@@ -62,6 +62,30 @@ button:disabled {
   @apply bg-sky-800;
 }
 
+.button.success {
+  @apply flex items-center px-4 py-1.5 border border-green-500 bg-green-700 rounded transition;
+  @apply hover:bg-transparent;
+}
+.button.success.active {
+  @apply bg-green-800;
+}
+
+.button.danger {
+  @apply flex items-center px-4 py-1.5 border border-pink-500 rounded transition;
+  @apply hover:bg-pink-700;
+}
+.button.danger.active {
+  @apply bg-pink-800;
+}
+
+.button.warning {
+  @apply flex items-center px-4 py-1.5 border border-yellow-500 rounded transition;
+  @apply hover:bg-yellow-600;
+}
+.button.warning.active {
+  @apply bg-yellow-600;
+}
+
 .input-row {
   @apply relative mb-3 pb-5;
 }
@@ -71,7 +95,7 @@ button:disabled {
 }
 
 .input {
-  @apply w-full py-1 px-2 border border-white border-opacity-50 rounded bg-transparent shadow-inner;
+  @apply w-full py-1.5 px-2 border border-white border-opacity-50 rounded bg-transparent shadow-inner;
 }
 
 .input[type="number"] {
@@ -155,4 +179,8 @@ select:-webkit-autofill:focus {
 
 .logline-mask {
   mask-image: linear-gradient(to top, rgba(0,0,0, 0), rgba(0,0,0, 1) 50%);
+}
+
+.bg-card {
+  background: transparent linear-gradient(to right bottom, rgba(255,255,255, 0) 60%, rgba(255,255,255, .08));
 }

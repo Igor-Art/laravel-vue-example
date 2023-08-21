@@ -8,7 +8,7 @@
         "php": "^8.2",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
-        "laravel/fortify": "^1.16",
+        "laravel/fortify": "^1.17",
         "laravel/framework": "^10.0",
         "laravel/octane": "^1.5",
         "laravel/sanctum": "^3.2",

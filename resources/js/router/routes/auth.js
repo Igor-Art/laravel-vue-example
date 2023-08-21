@@ -8,6 +8,14 @@ export default [
     },
   },
   {
+    path: '/two-factor',
+    name: 'auth.two-factor',
+    component: () => import('@/views/Auth/TwoFactor.vue'),
+    meta: {
+      auth: false,
+    },
+  },
+  {
     path: '/register',
     name: 'auth.register',
     component: () => import('@/views/Auth/Register.vue'),
