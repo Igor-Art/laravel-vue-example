@@ -51,7 +51,7 @@ export const useAuthStore = defineStore({
             if (response.data.two_factor) {
               router.push('/two-factor')
             } else {
-              this.loginUser(response.data, { name: 'home' })
+              this.loginUser(response.data.data, { name: 'home' })
             }
           })
           .catch((error) => {
