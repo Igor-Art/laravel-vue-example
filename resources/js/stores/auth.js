@@ -27,7 +27,13 @@ export const useAuthStore = defineStore({
 
       http.get('/api/auth/user')
         .then((response) => {
-          this.setUser(response.data.data)
+          const user = response.data
+
+          if (!this.validateUser(user)) {
+            return this.logout()
+          }
+
+          this.setUser(user)
         })
         .catch((error) => {
           //
@@ -35,6 +41,10 @@ export const useAuthStore = defineStore({
     },
 
     loginUser(data, redirectTo = null) {
+      if (!this.validateUser(data)) {
+        return this.logout()
+      }
+
       this.setUser(data)
 
       if (this.redirectTo || redirectTo) {
@@ -51,7 +61,7 @@ export const useAuthStore = defineStore({
             if (response.data.two_factor) {
               router.push('/two-factor')
             } else {
-              this.loginUser(response.data.data, { name: 'home' })
+              this.loginUser(response.data, { name: 'home' })
             }
           })
           .catch((error) => {
@@ -128,7 +138,15 @@ export const useAuthStore = defineStore({
       return this.check
     },
 
+    validateUser (user) {
+      return user && 'id' in user
+    },
+
     setUser (user) {
+      if (!this.validateUser(user)) {
+        user = null
+      }
+
       this.user = user
 
       localStorage.setItem('user', JSON.stringify(user))

@@ -28,7 +28,7 @@ class FortifyServiceProvider extends ServiceProvider
             public function toResponse($request)
             {
                 return $request->expectsJson()
-                    ? new UserResource(auth()->user())
+                    ? new UserResource($request->user())
                     : redirect('/');
             }
         });
@@ -37,7 +37,7 @@ class FortifyServiceProvider extends ServiceProvider
             public function toResponse($request)
             {
                 return $request->expectsJson()
-                    ? new UserResource(auth()->user())
+                    ? new UserResource($request->user())
                     : redirect('/');
             }
         });
@@ -46,7 +46,7 @@ class FortifyServiceProvider extends ServiceProvider
             public function toResponse($request)
             {
                 return $request->expectsJson()
-                    ? new UserResource(auth()->user())
+                    ? new UserResource($request->user())
                     : redirect('/');
             }
         });
