@@ -45,10 +45,10 @@ useMeta().setTitle('Login')
       <div class="mt-6">
         <div class="flex justify-between">
           <div>
-            <button v-if="recovery" class="button default" @click.prevent="toggleRecovery">
+            <button type="button" v-if="recovery" class="button default" @click.prevent="toggleRecovery">
               Use an authentication code
             </button>
-            <button v-else class="button default" @click.prevent="toggleRecovery">
+            <button type="button" v-else class="button default" @click.prevent="toggleRecovery">
               Lost device? Recovery
             </button>
           </div>
